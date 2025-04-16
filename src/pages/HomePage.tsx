@@ -16,14 +16,14 @@ function HomePage() {
   return (
     <div>
       <section>
-        <div className="relative min-h-screen mx-auto md:shrink-0">
+        <div className="relative h-screen w-screen mx-auto">
           <img
-            className="absolute inset-0 w-full h-full object-fill z-0 opacity-55 border-b-4 border-stone-500"
+            className="absolute mx-auto inset-0 w-full h-full object-fill z-0 opacity-55 border-b-4 border-stone-500"
             src={building}
             alt="building"
           />
 
-          <div className="relative z-10 flex flex-col md:items-end md:w-150 md:float-right justify-center min-h-screen mr-5 ">
+          <div className="relative z-10 flex flex-col md:items-end md:w-150 md:float-right justify-center min-h-screen mr-5">
             <h1 className="md:text-5xl sm:text-lg font-boldonse text-right">
               Pay Less{" "}
             </h1>

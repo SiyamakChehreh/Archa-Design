@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
-import Jurassic from "../assets/images/jurassic-park.png";
-import Building from "../assets/images/building.jpg";
-import Mountain from "../assets/mountain.jpg";
+import { useState, useEffect, ReactNode } from "react";
 
-const ImageSlider = () => {
-  const images = [Jurassic, Building, Mountain];
+interface ImageSliderProps {
+  images: string[];
+  content: ReactNode;
+}
 
+const ImageSlider = ({ images, content }: ImageSliderProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -25,7 +25,8 @@ const ImageSlider = () => {
   };
 
   return (
-    <div className="relative w-full max-w-lg h-64 mx-auto overflow-hidden rounded-2xl shadow-lg">
+    <div className="relative border-6 border-slate-400 bg-amber-50 w-60 h-64 mt-4 md:mt-5 md:max-w-xl md:w-full md:h-78 mx-auto overflow-hidden rounded-2xl shadow-lg">
+      <div>{content}</div>
       <div className="w-full h-64">
         <img
           src={images[currentIndex]}
@@ -56,7 +57,7 @@ const ImageSlider = () => {
             key={i}
             onClick={() => setCurrentIndex(i)}
             className={`w-3 h-3 rounded-full cursor-pointer ${
-              currentIndex === i ? "bg-white" : "bg-gray-400"
+              currentIndex === i ? "bg-gray-600" : "bg-gray-200"
             }`}
           ></div>
         ))}

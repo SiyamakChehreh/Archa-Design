@@ -18,14 +18,14 @@ export default function Header() {
   return (
     <div>
       <div className="bg-stone-100">
-        <nav className="hidden mx-auto md:flex flex-row fixed top-0 left-0 z-50 justify-around bg-stone-200 h-30 w-screen border-b-5 border-stone-400 items-center opacity-30 hover:opacity-90 transition-all duration-700 shadow-lg">
+        <nav className="hidden mx-auto md:flex flex-row fixed top-0 left-0 z-50 px-5 justify-around bg-stone-200 h-30 w-screen border-b-5 border-stone-400 items-center opacity-30 hover:opacity-90 transition-all duration-700 shadow-lg">
           <div className="text-3xl font-boldonse me-2">
             <Link to="/">
               Archa
               <span className="text-sky-600 text-3xl">Design</span>
             </Link>
           </div>
-          <ul className="flex flex-row gap-9 items-center">
+          <ul className="flex flex-row gap-9 items-center ml-20">
             <li className="border-3 rounded-lg border-gray-50 hover:border-stone-500 hover:font-bold px-6 py-4 hover:bg-gray-300 transition-colors duration-600 transition-border text-xl font-lalezar hover:scale-[1.05]">
               <Link to="educational">برنامه های آموزشی</Link>
             </li>
