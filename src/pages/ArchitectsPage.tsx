@@ -4,8 +4,8 @@ export default function ArchitectsPage() {
   return (
     <section id="architects">
       <div className="flex flex-col h-screen w-screen bg-gray-200 overflow-y-auto">
-        <div className="h-45 md:h-75 gap-5 md:gap-15 w-screen bg-gray-200 flex flex-row justify-center items-center perspective-normal">
-          <div className="h-25 w-35 md:h-60 md:w-75 animate-rotate-border bg-conic/[from_var(--border-angle)] from-stone-300 via-amber-400 to-stone-300 rounded-xl relative hover:rotate-y-360 transform-3d transition-all duration-1000 shadow-2xl">
+        <div className="group h-45 md:h-75 gap-5 md:gap-15 w-screen bg-gray-200 flex flex-row justify-center items-center perspective-normal">
+          <div className="h-25 w-35 md:h-60 md:w-75 animate-rotate-border bg-conic/[from_var(--border-angle)] from-stone-300 via-amber-400 to-stone-300 rounded-xl relative group-hover:rotate-y-360 transform-3d transition-all duration-1000 shadow-2xl">
             <img
               className="h-23 w-33 md:h-58 md:w-73 top-1 left-1 rounded-xl absolute"
               src={mountain}
@@ -29,8 +29,8 @@ export default function ArchitectsPage() {
         </div>
         <div className="h-74 md:h-104 w-screen bg-gray-200">
           <div className="h-74 md:h-104 mx-auto w-screen flex flex-row flex-wrap overflow-visible items-end justify-center gap-15 md:gap-28">
-            <div className="h-50 w-40 md:h-70 md:w-60 mb-4 md:mb-10 border-10 border-fuchsia-100 rounded-lg bg-stone-300 relative perspective-normal opacity-60 hover:opacity-100 hover:scale-[1.1] transition-all duration-800 drop-shadow-2xl">
-              <div className="absolute  bg-amber-600 size-22 md:size-45 rounded-full -top-9 -left-10 md:-top-18 md:-left-20 transform-3d hover:rotate-x-360 transition-all duration-800 animate-rotate-border bg-conic/[from_var(--border-angle)] from-stone-300 via-amber-400 to-stone-300">
+            <div className="group h-50 w-40 md:h-70 md:w-60 mb-4 md:mb-10 border-10 border-fuchsia-100 rounded-lg bg-stone-300 relative perspective-normal opacity-60 hover:opacity-100 hover:scale-[1.1] transition-all duration-800 drop-shadow-2xl">
+              <div className="absolute bg-amber-600 size-22 md:size-45 rounded-full -top-9 -left-10 md:-top-18 md:-left-20 transform-3d group-hover:rotate-x-360 transition-all duration-800 animate-rotate-border bg-conic/[from_var(--border-angle)] from-stone-300 via-amber-400 to-stone-300">
                 <img
                   className="absolute size-20 md:size-43 left-1 top-1 rounded-full object-cover"
                   src={mountain}
@@ -49,8 +49,8 @@ export default function ArchitectsPage() {
                 </p>
               </div>
             </div>
-            <div className="h-50 w-40 md:h-70 md:w-60 mb-4 md:mb-10 border-10 border-fuchsia-100 rounded-lg bg-stone-300 relative perspective-normal opacity-60 hover:opacity-100 hover:scale-[1.1] transition-all duration-800 drop-shadow-2xl">
-              <div className="absolute bg-amber-600 size-20 md:size-45 rounded-full -top-9 -left-10 md:-top-18 md:-left-20 transform-3d hover:rotate-x-360 transition-all duration-800 animate-rotate-border bg-conic/[from_var(--border-angle)] from-stone-300 via-amber-400 to-stone-300">
+            <div className="group h-50 w-40 md:h-70 md:w-60 mb-4 md:mb-10 border-10 border-fuchsia-100 rounded-lg bg-stone-300 relative perspective-normal opacity-60 hover:opacity-100 hover:scale-[1.1] transition-all duration-800 drop-shadow-2xl">
+              <div className="absolute bg-amber-600 size-20 md:size-45 rounded-full -top-9 -left-10 md:-top-18 md:-left-20 transform-3d group-hover:rotate-x-360 transition-all duration-800 animate-rotate-border bg-conic/[from_var(--border-angle)] from-stone-300 via-amber-400 to-stone-300">
                 <img
                   className="absolute size-18 md:size-43 left-1 top-1 rounded-full object-cover"
                   src={mountain}
@@ -69,8 +69,8 @@ export default function ArchitectsPage() {
                 </p>
               </div>
             </div>
-            <div className="h-50 w-40 md:h-70 md:w-60 mb-4 md:mb-10 border-10 border-fuchsia-100 rounded-lg bg-stone-300  relative perspective-normal opacity-60 hover:opacity-100 hover:scale-[1.1] transition-all duration-800 drop-shadow-2xl">
-              <div className="absolute bg-amber-600 size-20 md:size-45 rounded-full -top-9 -left-10 md:-top-18 md:-left-20 transform-3d hover:rotate-x-360 transition-all duration-800 animate-rotate-border bg-conic/[from_var(--border-angle)] from-stone-300 via-amber-400 to-stone-300">
+            <div className="group h-50 w-40 md:h-70 md:w-60 mb-4 md:mb-10 border-10 border-fuchsia-100 rounded-lg bg-stone-300  relative perspective-normal opacity-60 hover:opacity-100 hover:scale-[1.1] transition-all duration-800 drop-shadow-2xl">
+              <div className="absolute bg-amber-600 size-20 md:size-45 rounded-full -top-9 -left-10 md:-top-18 md:-left-20 transform-3d group-hover:rotate-x-360 transition-all duration-800 animate-rotate-border bg-conic/[from_var(--border-angle)] from-stone-300 via-amber-400 to-stone-300">
                 <img
                   className="absolute size-18 md:size-43 left-1 right-1 top-1 rounded-full object-cover"
                   src={mountain}
@@ -89,8 +89,8 @@ export default function ArchitectsPage() {
                 </p>
               </div>
             </div>
-            <div className="h-50 w-40 md:h-70 md:w-60 mb-4 md:mb-10 border-10 border-fuchsia-100 rounded-lg bg-stone-300 relative perspective-normal opacity-60 hover:opacity-100 hover:scale-[1.1] transition-all duration-800 drop-shadow-2xl">
-              <div className="absolute bg-amber-600 size-20 md:size-45 rounded-full -top-9 -left-10 md:-top-18 md:-left-20 transform-3d hover:rotate-x-360 transition-all duration-800 animate-rotate-border bg-conic/[from_var(--border-angle)] from-stone-300 via-amber-400 to-stone-300">
+            <div className="group h-50 w-40 md:h-70 md:w-60 mb-4 md:mb-10 border-10 border-fuchsia-100 rounded-lg bg-stone-300 relative perspective-normal opacity-60 hover:opacity-100 hover:scale-[1.1] transition-all duration-800 drop-shadow-2xl">
+              <div className="absolute bg-amber-600 size-20 md:size-45 rounded-full -top-9 -left-10 md:-top-18 md:-left-20 transform-3d group-hover:rotate-x-360 transition-all duration-800 animate-rotate-border bg-conic/[from_var(--border-angle)] from-stone-300 via-amber-400 to-stone-300">
                 <img
                   className="absolute size-18 md:size-43 left-1 right-1 top-1 rounded-full object-cover"
                   src={mountain}

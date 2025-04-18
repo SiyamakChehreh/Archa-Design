@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import X from "../assets/images/x.svg";
 import instagram from "../assets/images/instagram.svg";
 import facebook from "../assets/images/facebook.svg";
-import Telegram from "../assets/images/telegram.svg";
+import Telegram from "../assets/images/telegram3.svg";
 import HamburgerMenu from "../assets/images/hamburger-menu-icon.svg";
 
 //https://stackoverflow.com/questions/61196420/react-navigation-that-will-smooth-scroll-to-section-of-the-page
@@ -18,7 +18,7 @@ export default function Header() {
   return (
     <div>
       <div className="bg-stone-100">
-        <nav className="hidden mx-auto md:flex flex-row fixed top-0 left-0 z-50 px-5 justify-around bg-stone-200 h-30 w-screen border-b-5 border-stone-400 items-center opacity-30 hover:opacity-90 transition-all duration-700 shadow-lg">
+        <nav className="hidden mx-auto md:flex flex-row fixed top-0 left-0 z-50 px-5 justify-around bg-amber-100 h-30 w-screen border-b-5 border-indigo-200 items-center opacity-20 hover:opacity-90 transition-all duration-700 shadow-lg">
           <div className="text-3xl font-boldonse me-2">
             <Link to="/">
               Archa
@@ -26,10 +26,10 @@ export default function Header() {
             </Link>
           </div>
           <ul className="flex flex-row gap-9 items-center ml-20">
-            <li className="border-3 rounded-lg border-gray-50 hover:border-stone-500 hover:font-bold px-6 py-4 hover:bg-gray-300 transition-colors duration-600 transition-border text-xl font-lalezar hover:scale-[1.05]">
+            <li className="border-4 rounded-lg border-indigo-200 hover:border-stone-500 hover:font-bold px-6 py-4 hover:bg-gray-300 transition-all duration-600 text-xl font-lalezar hover:scale-[1.1]">
               <Link to="educational">برنامه های آموزشی</Link>
             </li>
-            <li className="border-3 rounded-lg border-gray-50 hover:border-stone-500 hover:font-bold px-6 py-4 hover:bg-gray-300 transition-colors duration-600 transition-border text-xl font-lalezar hover:scale-[1.05]">
+            <li className="border-4 rounded-lg border-indigo-200 hover:border-stone-500 hover:font-bold px-6 py-4 hover:bg-gray-300 transition-all duration-600 text-xl font-lalezar hover:scale-[1.1]">
               <Link
                 to="/about"
                 onClick={(e) => {
@@ -41,7 +41,7 @@ export default function Header() {
                 درباره ی ما
               </Link>
             </li>
-            <li className="border-3 rounded-lg border-gray-50 hover:border-stone-500 hover:font-bold px-6 py-4 hover:bg-gray-300 transition-colors duration-600 transition-border text-xl font-lalezar hover:scale-[1.05]">
+            <li className="border-4 rounded-lg border-indigo-200 hover:border-stone-500 hover:font-bold px-6 py-4 hover:bg-gray-300 transition-all duration-600  text-xl font-lalezar hover:scale-[1.1]">
               <Link
                 to="/architects"
                 onClick={(e) => {
@@ -54,12 +54,12 @@ export default function Header() {
                 تیم معماران
               </Link>
             </li>
-            <li className="border-3 rounded-lg border-gray-50 hover:border-stone-500 hover:font-bold px-6 py-4 hover:bg-gray-300 transition-colors duration-600 transition-border text-xl font-lalezar hover:scale-[1.05]">
+            <li className="border-4 rounded-lg border-indigo-200 hover:border-stone-500 hover:font-bold px-6 py-4 hover:bg-gray-300 transition-all duration-600 text-xl font-lalezar hover:scale-[1.1]">
               <Link to="/projects">پروژه های ما</Link>
             </li>
           </ul>
 
-          <ul className="flex flex-row mx-auto my-auto md:gap-15  md:place-items-center">
+          <ul className="flex flex-row mx-auto my-auto md:gap-15 md:place-items-center">
             <li className="hover:font-bold flex gap-7">
               <Link to="#">
                 <img className="size-10" src={X} />
@@ -84,7 +84,7 @@ export default function Header() {
                 <span className="text-sky-600 text-md">Design</span>
               </Link>
             </div>
-            <div className="flex gap-4">
+            <div className="flex gap-4 mb-2">
               <Link to="#">
                 <img className="size-6" src={X} />
               </Link>
