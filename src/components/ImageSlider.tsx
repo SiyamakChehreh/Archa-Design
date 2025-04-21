@@ -25,7 +25,7 @@ const ImageSlider = ({ images, content }: ImageSliderProps) => {
   };
 
   return (
-    <div className="relative border-6 border-slate-400 bg-amber-50 w-60 h-64 mt-4 md:mt-5 md:max-w-xl md:w-full md:h-78 mx-auto overflow-hidden rounded-2xl shadow-lg hover:scale-[1.09] transition-all duration-700">
+    <div className="relative border-6 border-slate-400 bg-amber-50 w-60 h-64 mt-4 md:mt-5 md:mb-8 md:max-w-xl md:w-full md:h-78 mx-auto overflow-hidden rounded-2xl shadow-lg hover:scale-[1.09] transition-all duration-700">
       <div>{content}</div>
       <div className="w-full h-64">
         <img

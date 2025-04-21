@@ -2,8 +2,8 @@ import mountain from "../assets/mountain.jpg";
 
 export default function ArchitectsPage() {
   return (
-    <section className="h-screen w-screen" id="architects">
-      <div className="flex flex-col h-screen w-screen bg-gray-200">
+    <section className="h-auto w-screen" id="architects">
+      <div className="flex flex-col h-auto w-screen gap-20 md:gap-10 bg-gray-200">
         <div className="group h-45 md:h-75 gap-5 md:gap-15 w-auto bg-gray-200 flex flex-col md:flex-row justify-center items-center perspective-normal">
           <div className="h-25 w-35 md:h-60 md:w-75 animate-rotate-border bg-conic/[from_var(--border-angle)] from-stone-300 via-amber-400 to-stone-300 rounded-xl relative group-hover:rotate-y-360 transform-3d transition-all duration-1000 shadow-2xl">
             <img
@@ -27,8 +27,8 @@ export default function ArchitectsPage() {
             </div>
           </div>
         </div>
-        <div className="h-74 md:h-104 w-screen bg-gray-200">
-          <div className="h-74 md:h-104 mx-auto w-screen flex flex-row flex-wrap overflow-visible items-end justify-center gap-15 md:gap-28">
+        <div className="h-74 md:h-104 mx-auto w-screen ">
+          <div className="h-auto md:h-104 mx-auto w-screen bg-gray-200 flex flex-row flex-wrap overflow-visible items-end justify-center gap-10 md:gap-25 md:pl-18 pt-15">
             <div className="group h-50 w-40 md:h-70 md:w-60 mb-4 md:mb-10 border-10 border-fuchsia-100 rounded-lg bg-stone-300 relative perspective-normal opacity-60 hover:opacity-100 hover:scale-[1.1] transition-all duration-800 drop-shadow-2xl">
               <div className="absolute bg-amber-600 size-22 md:size-45 rounded-full -top-9 -left-10 md:-top-18 md:-left-20 transform-3d group-hover:rotate-x-360 transition-all duration-800 animate-rotate-border bg-conic/[from_var(--border-angle)] from-stone-300 via-amber-400 to-stone-300">
                 <img

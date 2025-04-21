@@ -25,7 +25,7 @@ const content = (
 
 export default function ProjectsPage() {
   return (
-    <section id="projects" className="h-auto w-screen">
+    <section id="projects" className="h-auto w-screen mt-59 md:mt-0">
       <div className="h-auto w-screen bg-gray-200 grid grid-cols-1 md:grid-cols-2 gap-2">
         <ImageSlider images={album1} content={content} />
         <ImageSlider images={album2} content={content} />

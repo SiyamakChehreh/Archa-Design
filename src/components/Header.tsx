@@ -55,7 +55,16 @@ export default function Header() {
               </Link>
             </li>
             <li className="border-4 rounded-lg border-indigo-200 hover:border-stone-500 hover:font-bold px-6 py-4 hover:bg-gray-300 transition-all duration-600 text-xl font-lalezar hover:scale-[1.1]">
-              <Link to="/projects">پروژه های ما</Link>
+              <Link
+                to="/projects"
+                onClick={(e) => {
+                  let projects = document.getElementById("projects");
+                  e.preventDefault();
+                  projects && projects.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                پروژه های ما
+              </Link>
             </li>
           </ul>
 
