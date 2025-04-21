@@ -15,40 +15,38 @@ function HomePage() {
   const showContent = isExpanded ? content : `${content.substring(0, 150)}...`;
 
   return (
-    <div>
-      <section>
-        <div className="relative h-screen w-screen mx-auto">
-          <img
-            className="hidden lg:block absolute mx-auto inset-0 w-full h-full object-fill z-0 opacity-55 border-b-4 border-stone-500"
-            src={building}
-            alt="building"
-          />
-          <img
-            className="lg:hidden blur-xs absolute mx-auto inset-0 w-full h-full object-fill z-0 opacity-95 border-b-4 border-stone-500"
-            src={building2}
-            alt="building"
-          />
+    <section id="home">
+      <div className="relative h-screen w-screen mx-auto">
+        <img
+          className="hidden md:block absolute mx-auto inset-0 w-full h-full object-fill z-0 opacity-55 border-b-4 border-stone-500"
+          src={building}
+          alt="building"
+        />
+        <img
+          className="md:hidden blur-xs absolute mx-auto inset-0 w-full h-full object-fill z-0 opacity-95 border-b-4 border-stone-500"
+          src={building2}
+          alt="building"
+        />
 
-          <div className="relative z-10 flex flex-col lg:w-150 float-right pt-7 lg:mt-30 pr-7">
-            <h1 className="lg:text-5xl text-2xl font-extrabold font-lalezar text-white lg:text-black text-right">
-              فضا را تصور کن
-            </h1>
-            <h1 className="lg:text-5xl text-2xl font-extrabold font-lalezar text-right mt-3 text-white lg:text-black">
-              تصوراتت را زندگی کن
-            </h1>
-            <p className="lg:text-xl/9 mx-auto ml-15 my-4 font-lalezar text-right text-shadow-xl text-white lg:text-black">
-              {showContent}
-            </p>
-            <button
-              onClick={toggleContent}
-              className="mx-auto outline-4 outline-offset-2 outline-sky-600 rounded-4xl bg-sky-700 text-white hover:bg-sky-500 hover:font-bold transition-all duration-500 lg:mt-4 py-1 px-3 mr-0 lg:mr-4"
-            >
-              {isExpanded ? "show less" : "show more"}
-            </button>
-          </div>
+        <div className="relative z-10 flex flex-col md:w-150 float-right pt-7 md:mt-30 pr-7">
+          <h1 className="md:text-5xl text-2xl font-extrabold font-lalezar text-white md:text-black text-right">
+            فضا را تصور کن
+          </h1>
+          <h1 className="md:text-5xl text-2xl font-extrabold font-lalezar text-right mt-3 text-white md:text-black">
+            تصوراتت را زندگی کن
+          </h1>
+          <p className="md:text-xl/9 mx-auto ml-15 my-4 font-lalezar text-right text-shadow-xl text-white md:text-black">
+            {showContent}
+          </p>
+          <button
+            onClick={toggleContent}
+            className="mx-auto outline-4 outline-offset-2 outline-sky-600 rounded-4xl bg-sky-700 text-white hover:bg-sky-500 hover:font-bold transition-all duration-500 md:mt-4 py-1 px-3 mr-0 md:mr-4"
+          >
+            {isExpanded ? "show less" : "show more"}
+          </button>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }
 

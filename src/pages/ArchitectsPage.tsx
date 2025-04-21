@@ -2,7 +2,7 @@ import mountain from "../assets/mountain.jpg";
 
 export default function ArchitectsPage() {
   return (
-    <section className="h-auto w-screen" id="architects">
+    <section className="h-auto w-screen scroll-mt-30" id="architects">
       <div className="flex flex-col h-auto w-screen gap-20 lg:gap-10 bg-gray-200">
         <div className="group h-45 lg:h-75 gap-5 lg:gap-15 w-auto bg-gray-200 flex flex-col lg:flex-row justify-center items-center perspective-normal">
           <div className="h-25 w-35 lg:h-60 lg:w-75 animate-rotate-border bg-conic/[from_var(--border-angle)] from-stone-300 via-amber-400 to-stone-300 rounded-xl relative group-hover:rotate-y-360 transform-3d transition-all duration-1000 shadow-2xl">
