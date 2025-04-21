@@ -18,7 +18,7 @@ export default function Header() {
   return (
     <div>
       <div className="bg-stone-100">
-        <nav className="hidden mx-auto md:flex flex-row fixed top-0 left-0 z-50 px-5 justify-around bg-amber-100 h-30 w-screen border-b-5 border-indigo-200 items-center opacity-20 hover:opacity-90 transition-all duration-700 shadow-lg">
+        <nav className="hidden mx-auto lg:flex flex-row fixed top-0 left-0 z-50 px-5 justify-around bg-amber-100 h-30 w-screen border-b-5 border-indigo-200 items-center opacity-20 hover:opacity-90 transition-all duration-700 shadow-lg">
           <div className="text-3xl font-boldonse me-2">
             <Link to="/">
               Archa
@@ -68,7 +68,7 @@ export default function Header() {
             </li>
           </ul>
 
-          <ul className="flex flex-row mx-auto my-auto md:gap-15 md:place-items-center">
+          <ul className="flex flex-row mx-auto my-auto lg:gap-15 lg:place-items-center">
             <li className="hover:font-bold flex gap-7">
               <Link to="#">
                 <img className="size-10" src={X} />
@@ -86,11 +86,11 @@ export default function Header() {
           </ul>
         </nav>
         <nav className="py-3">
-          <div className="md:hidden flex justify-around items-start">
-            <div className="text-md font-boldonse">
+          <div className="lg:hidden flex justify-around items-start">
+            <div className="text-lg font-boldonse">
               <Link to="/">
                 Archa
-                <span className="text-sky-600 text-md">Design</span>
+                <span className="text-sky-600 text-lg">Design</span>
               </Link>
             </div>
             <div className="flex gap-4 mb-2">
@@ -116,7 +116,7 @@ export default function Header() {
             </button>
           </div>
           {isOpen && (
-            <div className="md:hidden px-4 pb-4 bg-stone-200 shadow-md flex flex-col items-end">
+            <div className="lg:hidden px-4 pb-4 bg-stone-200 shadow-lg flex flex-col items-end">
               <Link
                 to="/about"
                 className="block py-2 text-gray-700 hover:text-blue-600 font-lalezar font-bold"
