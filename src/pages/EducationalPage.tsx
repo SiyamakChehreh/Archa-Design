@@ -2,6 +2,8 @@ import { ChangeEvent, useState } from "react";
 import max from "../assets/images/3d max.svg";
 import autocad from "../assets/images/autocad.svg";
 import sketchup from "../assets/images/sketchup.svg";
+import LeftArrow from "../assets/images/left-arrow.svg";
+import RightArrow from "../assets/images/right-arrow.svg";
 
 interface user {
   name: string;
@@ -10,9 +12,9 @@ interface user {
 }
 
 export default function EducationalPage() {
-  const [isOpen1, setIsOpen1] = useState<boolean>(false);
-  const [isOpen2, setIsOpen2] = useState<boolean>(false);
-  const [isOpen3, setIsOpen3] = useState<boolean>(false);
+  const [isOpen1, setIsOpen1] = useState<string>("second");
+  const [isOpen2, setIsOpen2] = useState<string>("second");
+  const [isOpen3, setIsOpen3] = useState<string>("second");
 
   const [name, setName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
@@ -49,95 +51,236 @@ export default function EducationalPage() {
   return (
     <section id="educational" className="scroll-mt-30">
       <div className="h-auto w-screen basis-auto p-10 flex flex-col gap-5 lg:gap-12 bg-gray-200">
-        <div className="flex-col place-items-center lg:flex lg:flex-row mx-auto lg:w-260 lg:justify-around">
+        <div className="flex-col relative place-items-center lg:flex lg:flex-row mx-auto lg:w-260 lg:justify-around">
           <div>
             <img
-              className={`lg:h-50 lg:w-50 h-25 w-25 transitiona-all duration-700 ease-in-out ${
-                isOpen1 ? "scale-[0.90]" : "scale-[1.3]"
+              className={`lg:h-50 lg:w-50 h-25 w-25 transition-all duration-700 ease-in-out ${
+                isOpen1 === "first" ? "scale-[0.90]" : "scale-[1.3]"
               }`}
               onClick={() => {
-                setIsOpen1(!isOpen1);
+                setIsOpen1(isOpen1 === "first" ? "second" : "first");
               }}
               src={max}
             />
           </div>
           <div
-            className={`flex flex-col p-2 border-4 rounded-xl border-slate-300 transition-all duration-700 ease-in-out ${
-              isOpen1
-                ? "w-75 h-40 lg:w-170 lg:h-45 opacity-100"
-                : "w-50 h-50 opacity-0"
+            className={`flex flex-col bg-slate-100 transition-all duration-700 ease-in-out absolute inset-0 left-80 ${
+              isOpen1 === "first"
+                ? "p-2 border-4 rounded-xl border-gray-500 w-75 h-40 lg:w-170 lg:h-45 opacity-100 pointer-events-auto"
+                : "w-0 h-50 opacity-0 pointer-events-none"
             } `}
           >
-            <form onSubmit={handleSubmit} className="flex flex-col gap-1">
+            <form onSubmit={handleSubmit} className=" flex flex-col gap-1">
               <input
-                className="border-2 rounded-xl border-fuchsia-200 focus:border-amber-300 p-1"
+                className="border-2 rounded-xl border-fuchsia-300  p-1 font-lalezar"
                 type="text"
                 value={name}
-                placeholder="Name"
+                placeholder="نام"
                 onChange={handleChangeName}
               />
               <input
-                className="border-2 rounded-xl border-fuchsia-200 focus:border-amber-300 p-1"
+                className="border-2 rounded-xl border-fuchsia-300  p-1 font-lalezar"
                 type="text"
                 value={lastName}
-                placeholder="Last Name"
+                placeholder="نام خانوادگی"
                 onChange={handleChangeLastName}
               />
               <input
-                className="border-2 rounded-xl border-fuchsia-200 focus:border-amber-300 p-1"
-                type="text"
+                className="border-2 rounded-xl border-fuchsia-300  p-1 font-lalezar"
+                type="number"
                 value={phone}
-                placeholder="Phone Number"
+                placeholder="شماره تماس"
                 onChange={handleChangePhone}
               />
               <button
-                className="border-2 border-gray-500 rounded-xl bg-sky-500 focus:bg-sky-700 mx-auto px-2 mt-2"
+                className="border-2 border-gray-500 rounded-sm bg-sky-500 focus:bg-sky-700 mx-auto px-4 mt-2 font-lalezar text-gray-900"
                 type="submit"
               >
-                add User
+                ثبت‌نام
               </button>
             </form>
           </div>
+          <div
+            className={`flex flex-col relative p-2 bg-slate-100 border-4 rounded-xl border-gray-600 w-75 h-40 lg:w-170 lg:h-40 transition-all duration-700 ease-in-out ${
+              isOpen1 === "second"
+                ? "opacity-100 pointer-events-auto"
+                : "w-0 h-50 opacity-0 pointer-events-none"
+            } `}
+          >
+            <h1 className="font-boldonse font-bold text-xl text-right">
+              3d Max
+            </h1>
+            <div className="absolute flex flex-row top-2 left-2 font-lalezar cursor-default">
+              <img className="size-9" src={LeftArrow} />
+              <h2 className="font-lalezar pt-1 font-bold text-sky-800">
+                برای ثبت‌نام بر روی آیکون نرم‌افزار کلیک کنید
+              </h2>
+            </div>
+
+            <p className="font-lalezar text-right text-md cursor-default pt-2">
+              اتودسک تری دی مکس یکی از قویترین و پیشرفته ترین برنامه ها در زمینه
+              طراحی سه بعدی و انیمیشن سازی به شمار می رود. این نرم‌افزار به خاطر
+              داشتن ابزارهای کارا و قدرتمند در بسیاری از صنایع به ویژه بازیهای
+              رایانه ای و طراحی و خلق جلوه های ویژه در فیلمها بسیار پرکاربرد
+              است.مهندسان می توانند به راحتی طراحیهای خود در محیط اتوکد را وارد
+              این برنامه کرده و نمای سه بعدی طرح خود را ایجاد کنند و با چاپ آن،
+              نمای کلی طرح خود را قبل از اجرا به مشتریان خود نشان دهند
+            </p>
+          </div>
         </div>
-        <div className="flex-col place-items-center lg:flex mx-auto lg:w-260 lg:justify-around lg:flex-row-reverse">
+        <div className="flex-col relative place-items-center lg:flex mx-auto lg:w-260 lg:justify-around lg:flex-row-reverse">
           <div>
             <img
-              className={`lg:h-50 lg:w-50 h-25 w-25 transitiona-all duration-700 ease-in-out ${
-                isOpen2 ? "scale-[0.90]" : "scale-[1.3]"
+              className={`lg:h-50 lg:w-50 h-25 w-25 transition-all duration-700 ease-in-out ${
+                isOpen2 === "first" ? "scale-[0.90]" : "scale-[1.3]"
               }`}
               onClick={() => {
-                setIsOpen2(!isOpen2);
+                setIsOpen2(isOpen2 === "first" ? "second" : "first");
               }}
               src={autocad}
             />
           </div>
           <div
-            className={`transition-all duration-700 ease-in-out ${
-              isOpen2
-                ? "w-75 h-40 lg:w-170 lg:h-45 opacity-100"
-                : "w-0 h-45 opacity-0"
-            } bg-white border-2 border-black rounded`}
-          ></div>
+            className={`flex flex-col bg-slate-100 transition-all duration-700 ease-in-out absolute inset-0 right-68 ${
+              isOpen2 === "first"
+                ? "p-2 border-4 rounded-xl border-gray-500 w-75 h-40 lg:w-170 lg:h-45 opacity-100 pointer-events-auto"
+                : "w-0 h-50 opacity-0 pointer-events-none"
+            } `}
+          >
+            <form onSubmit={handleSubmit} className=" flex flex-col gap-1">
+              <input
+                className="border-2 rounded-xl border-fuchsia-300  p-1 font-lalezar"
+                type="text"
+                value={name}
+                placeholder="نام"
+                onChange={handleChangeName}
+              />
+              <input
+                className="border-2 rounded-xl border-fuchsia-300  p-1 font-lalezar"
+                type="text"
+                value={lastName}
+                placeholder="نام خانوادگی"
+                onChange={handleChangeLastName}
+              />
+              <input
+                className="border-2 rounded-xl border-fuchsia-300  p-1 font-lalezar"
+                type="number"
+                value={phone}
+                placeholder="شماره تماس"
+                onChange={handleChangePhone}
+              />
+              <button
+                className="border-2 border-gray-500 rounded-sm bg-sky-500 focus:bg-sky-700 mx-auto px-4 mt-2 font-lalezar text-gray-900"
+                type="submit"
+              >
+                ثبت‌نام
+              </button>
+            </form>
+          </div>
+          <div
+            className={`flex flex-col relative p-2 bg-slate-100 border-4 rounded-xl border-gray-600 w-75 h-40 lg:w-170 lg:h-40 transition-all duration-700 ease-in-out ${
+              isOpen2 === "second"
+                ? "opacity-100 pointer-events-auto"
+                : "w-0 h-50 opacity-0 pointer-events-none"
+            } `}
+          >
+            <h1 className="font-boldonse font-bold text-xl text-left">
+              3d Max
+            </h1>
+            <div className="absolute flex flex-row top-2 right-2 font-lalezar cursor-default">
+              <h2 className="font-lalezar pt-1 font-bold text-sky-800">
+                برای ثبت‌نام بر روی آیکون نرم‌افزار کلیک کنید
+              </h2>
+              <img className="size-9" src={RightArrow} />
+            </div>
+
+            <p className="font-lalezar text-right text-md cursor-default pt-2">
+              اتودسک تری دی مکس یکی از قویترین و پیشرفته ترین برنامه ها در زمینه
+              طراحی سه بعدی و انیمیشن سازی به شمار می رود. این نرم‌افزار به خاطر
+              داشتن ابزارهای کارا و قدرتمند در بسیاری از صنایع به ویژه بازیهای
+              رایانه ای و طراحی و خلق جلوه های ویژه در فیلمها بسیار پرکاربرد
+              است.مهندسان می توانند به راحتی طراحیهای خود در محیط اتوکد را وارد
+              این برنامه کرده و نمای سه بعدی طرح خود را ایجاد کنند و با چاپ آن،
+              نمای کلی طرح خود را قبل از اجرا به مشتریان خود نشان دهند
+            </p>
+          </div>
         </div>
-        <div className="flex-col place-items-center lg:flex lg:flex-row mx-auto lg:w-260 lg:justify-around">
+        <div className="flex-col relative place-items-center lg:flex lg:flex-row mx-auto lg:w-260 lg:justify-around">
           <div>
             <img
-              className={`lg:h-50 lg:w-50 h-25 w-25 transitiona-all duration-700 ease-in-out ${
-                isOpen3 ? "scale-[0.90]" : "scale-[1.3]"
+              className={`lg:h-50 lg:w-50 h-25 w-25 transition-all duration-700 ease-in-out ${
+                isOpen3 === "first" ? "scale-[0.90]" : "scale-[1.3]"
               }`}
               onClick={() => {
-                setIsOpen3(!isOpen3);
+                setIsOpen3(isOpen3 === "first" ? "second" : "first");
               }}
               src={sketchup}
             />
           </div>
           <div
-            className={`transition-all duration-700 ease-in-out ${
-              isOpen3
-                ? "w-75 h-40 lg:w-170 lg:h-45 opacity-100"
-                : "w-0 h-45 opacity-0"
-            } bg-white border-2 border-black rounded`}
-          ></div>
+            className={`flex flex-col bg-slate-100 transition-all duration-700 ease-in-out absolute inset-0 left-80 ${
+              isOpen3 === "first"
+                ? "p-2 border-4 rounded-xl border-gray-500 w-75 h-40 lg:w-170 lg:h-45 opacity-100 pointer-events-auto"
+                : "w-0 h-50 opacity-0 pointer-events-none"
+            } `}
+          >
+            <form onSubmit={handleSubmit} className=" flex flex-col gap-1">
+              <input
+                className="border-2 rounded-xl border-fuchsia-300  p-1 font-lalezar"
+                type="text"
+                value={name}
+                placeholder="نام"
+                onChange={handleChangeName}
+              />
+              <input
+                className="border-2 rounded-xl border-fuchsia-300  p-1 font-lalezar"
+                type="text"
+                value={lastName}
+                placeholder="نام خانوادگی"
+                onChange={handleChangeLastName}
+              />
+              <input
+                className="border-2 rounded-xl border-fuchsia-300  p-1 font-lalezar"
+                type="number"
+                value={phone}
+                placeholder="شماره تماس"
+                onChange={handleChangePhone}
+              />
+              <button
+                className="border-2 border-gray-500 rounded-sm bg-sky-500 focus:bg-sky-700 mx-auto px-4 mt-2 font-lalezar text-gray-900"
+                type="submit"
+              >
+                ثبت‌نام
+              </button>
+            </form>
+          </div>
+          <div
+            className={`flex flex-col relative p-2 bg-slate-100 border-4 rounded-xl border-gray-600 w-75 h-40 lg:w-170 lg:h-40 transition-all duration-700 ease-in-out ${
+              isOpen3 === "second"
+                ? "opacity-100 pointer-events-auto"
+                : "w-0 h-50 opacity-0 pointer-events-none"
+            } `}
+          >
+            <h1 className="font-boldonse font-bold text-xl text-right">
+              3d Max
+            </h1>
+            <div className="absolute flex flex-row top-2 left-2 font-lalezar cursor-default">
+              <img className="size-9" src={LeftArrow} />
+              <h2 className="font-lalezar pt-1 font-bold text-sky-800">
+                برای ثبت‌نام بر روی آیکون نرم‌افزار کلیک کنید
+              </h2>
+            </div>
+
+            <p className="font-lalezar text-right text-md cursor-default pt-2">
+              اتودسک تری دی مکس یکی از قویترین و پیشرفته ترین برنامه ها در زمینه
+              طراحی سه بعدی و انیمیشن سازی به شمار می رود. این نرم‌افزار به خاطر
+              داشتن ابزارهای کارا و قدرتمند در بسیاری از صنایع به ویژه بازیهای
+              رایانه ای و طراحی و خلق جلوه های ویژه در فیلمها بسیار پرکاربرد
+              است.مهندسان می توانند به راحتی طراحیهای خود در محیط اتوکد را وارد
+              این برنامه کرده و نمای سه بعدی طرح خود را ایجاد کنند و با چاپ آن،
+              نمای کلی طرح خود را قبل از اجرا به مشتریان خود نشان دهند
+            </p>
+          </div>
         </div>
       </div>
     </section>

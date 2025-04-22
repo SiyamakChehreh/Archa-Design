@@ -54,7 +54,16 @@ export default function Header() {
           </div>
           <ul className="flex flex-row gap-9 items-center ml-20">
             <li className="border-4 rounded-md border-indigo-200 hover:border-stone-500 hover:font-bold px-6 py-4 hover:bg-gray-300 transition-all duration-600 text-xl font-lalezar hover:scale-[1.1]">
-              <Link to="educational">برنامه های آموزشی</Link>
+              <Link
+                to="educational"
+                onClick={(e) => {
+                  let education = document.getElementById("educational");
+                  e.preventDefault();
+                  education && education.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                برنامه های آموزشی
+              </Link>
             </li>
             <li className="border-4 rounded-md border-indigo-200 hover:border-stone-500 hover:font-bold px-6 py-4 hover:bg-gray-300 transition-all duration-600 text-xl font-lalezar hover:scale-[1.1]">
               <Link
@@ -177,6 +186,17 @@ export default function Header() {
                 }}
               >
                 پروژه های ما
+              </Link>
+              <Link
+                to="/educational"
+                className="block py-2 text-gray-700 hover:text-blue-600 font-lalezar font-bold"
+                onClick={(e) => {
+                  let education = document.getElementById("educational");
+                  e.preventDefault();
+                  education && education.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                برنامه‌های آموزشی
               </Link>
             </div>
           )}
