@@ -29,20 +29,20 @@ function HomePage() {
         />
 
         <div className="relative z-10 flex flex-col md:w-150 float-right pt-7 md:mt-30 pr-7">
-          <h1 className="md:text-5xl text-2xl font-extrabold font-lalezar text-white md:text-black text-right">
+          <h1 className="md:text-5xl text-2xl font-extrabold font-lalezar text-white md:text-black text-right cursor-default">
             فضا را تصور کن
           </h1>
-          <h1 className="md:text-5xl text-2xl font-extrabold font-lalezar text-right mt-3 text-white md:text-black">
+          <h1 className="md:text-5xl text-2xl font-extrabold font-lalezar text-right mt-3 text-white md:text-black cursor-default">
             تصوراتت را زندگی کن
           </h1>
-          <p className="md:text-xl/9 mx-auto ml-15 my-4 font-lalezar text-right text-shadow-xl text-white md:text-black">
+          <p className="md:text-xl/9 mx-auto ml-15 my-4 font-lalezar text-right text-shadow-xl text-white md:text-black cursor-default">
             {showContent}
           </p>
           <button
             onClick={toggleContent}
-            className="mx-auto outline-4 outline-offset-2 outline-sky-600 rounded-4xl bg-sky-700 text-white hover:bg-sky-500 hover:font-bold transition-all duration-500 md:mt-4 py-1 px-3 mr-0 md:mr-4"
+            className="mx-auto outline-4 outline-offset-2 outline-sky-600 rounded-4xl bg-sky-700 text-white hover:bg-sky-500 font-lalezar hover:font-bold transition-all duration-500 md:mt-4 md:px-3 py-1 px-3 mr-0 md:mr-4"
           >
-            {isExpanded ? "show less" : "show more"}
+            {isExpanded ? "کمتر" : "بیشتر"}
           </button>
         </div>
       </div>

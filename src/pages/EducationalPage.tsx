@@ -64,9 +64,9 @@ export default function EducationalPage() {
             />
           </div>
           <div
-            className={`flex flex-col bg-slate-100 transition-all duration-700 ease-in-out absolute inset-0 left-80 ${
+            className={`flex flex-col bg-slate-100 transition-all duration-700 ease-in-out absolute top-34 inset-0 lg:left-80 lg:top-5 ${
               isOpen1 === "first"
-                ? "p-2 border-4 rounded-xl border-gray-500 w-75 h-40 lg:w-170 lg:h-45 opacity-100 pointer-events-auto"
+                ? "p-2 border-4 rounded-xl border-gray-500 w-75 h-50 lg:w-170 lg:h-45 opacity-100 pointer-events-auto"
                 : "w-0 h-50 opacity-0 pointer-events-none"
             } `}
           >
@@ -101,23 +101,23 @@ export default function EducationalPage() {
             </form>
           </div>
           <div
-            className={`flex flex-col relative p-2 bg-slate-100 border-4 rounded-xl border-gray-600 w-75 h-40 lg:w-170 lg:h-40 transition-all duration-700 ease-in-out ${
+            className={`flex flex-col relative p-2 bg-slate-100 border-4 rounded-xl border-gray-600 w-75 h-80 mt-10 lg:w-170 lg:h-40 transition-all duration-700 ease-in-out ${
               isOpen1 === "second"
                 ? "opacity-100 pointer-events-auto"
                 : "w-0 h-50 opacity-0 pointer-events-none"
             } `}
           >
-            <h1 className="font-boldonse font-bold text-xl text-right">
+            <h1 className="font-boldonse font-bold text-xl text-center lg:text-right cursor-default">
               3d Max
             </h1>
-            <div className="absolute flex flex-row top-2 left-2 font-lalezar cursor-default">
-              <img className="size-9" src={LeftArrow} />
-              <h2 className="font-lalezar pt-1 font-bold text-sky-800">
+            <div className="text-center lg:absolute lg:flex lg:flex-row top-2 left-2 font-lalezar cursor-default">
+              <img className="size-9 hidden lg:block" src={LeftArrow} />
+              <h2 className="font-lalezar pt-1 font-bold text-sky-800 cursor-default">
                 برای ثبت‌نام بر روی آیکون نرم‌افزار کلیک کنید
               </h2>
             </div>
 
-            <p className="font-lalezar text-right text-md cursor-default pt-2">
+            <p className="font-lalezar text-center lg:text-right text-md cursor-default pt-2">
               اتودسک تری دی مکس یکی از قویترین و پیشرفته ترین برنامه ها در زمینه
               طراحی سه بعدی و انیمیشن سازی به شمار می رود. این نرم‌افزار به خاطر
               داشتن ابزارهای کارا و قدرتمند در بسیاری از صنایع به ویژه بازیهای
@@ -141,9 +141,9 @@ export default function EducationalPage() {
             />
           </div>
           <div
-            className={`flex flex-col bg-slate-100 transition-all duration-700 ease-in-out absolute inset-0 right-68 ${
+            className={`flex flex-col bg-slate-100 transition-all duration-700 ease-in-out absolute top-34 inset-0 lg:right-68 lg:top-5 ${
               isOpen2 === "first"
-                ? "p-2 border-4 rounded-xl border-gray-500 w-75 h-40 lg:w-170 lg:h-45 opacity-100 pointer-events-auto"
+                ? "p-2 border-4 rounded-xl border-gray-500 w-75 h-50 lg:w-170 lg:h-45 opacity-100 pointer-events-auto"
                 : "w-0 h-50 opacity-0 pointer-events-none"
             } `}
           >
@@ -178,23 +178,23 @@ export default function EducationalPage() {
             </form>
           </div>
           <div
-            className={`flex flex-col relative p-2 bg-slate-100 border-4 rounded-xl border-gray-600 w-75 h-40 lg:w-170 lg:h-40 transition-all duration-700 ease-in-out ${
+            className={`flex flex-col relative p-2 bg-slate-100 border-4 rounded-xl border-gray-600 w-75 h-80 mt-10 lg:w-170 lg:h-40 transition-all duration-700 ease-in-out ${
               isOpen2 === "second"
                 ? "opacity-100 pointer-events-auto"
                 : "w-0 h-50 opacity-0 pointer-events-none"
             } `}
           >
-            <h1 className="font-boldonse font-bold text-xl text-left">
-              3d Max
+            <h1 className="font-boldonse font-bold text-xl text-center lg:text-left cursor-default">
+              AutoCad
             </h1>
-            <div className="absolute flex flex-row top-2 right-2 font-lalezar cursor-default">
-              <h2 className="font-lalezar pt-1 font-bold text-sky-800">
+            <div className="text-center lg:absolute lg:flex lg:flex-row top-2 right-2 font-lalezar cursor-default">
+              <h2 className="font-lalezar pt-1 font-bold text-sky-800 cursor-default">
                 برای ثبت‌نام بر روی آیکون نرم‌افزار کلیک کنید
               </h2>
-              <img className="size-9" src={RightArrow} />
+              <img className="size-9 hidden lg:block" src={RightArrow} />
             </div>
 
-            <p className="font-lalezar text-right text-md cursor-default pt-2">
+            <p className="font-lalezar text-center lg:text-right text-md cursor-default pt-2">
               اتودسک تری دی مکس یکی از قویترین و پیشرفته ترین برنامه ها در زمینه
               طراحی سه بعدی و انیمیشن سازی به شمار می رود. این نرم‌افزار به خاطر
               داشتن ابزارهای کارا و قدرتمند در بسیاری از صنایع به ویژه بازیهای
@@ -218,9 +218,9 @@ export default function EducationalPage() {
             />
           </div>
           <div
-            className={`flex flex-col bg-slate-100 transition-all duration-700 ease-in-out absolute inset-0 left-80 ${
+            className={`flex flex-col bg-slate-100 transition-all duration-700 ease-in-out absolute top-34 inset-0 lg:left-80 lg:top-5 ${
               isOpen3 === "first"
-                ? "p-2 border-4 rounded-xl border-gray-500 w-75 h-40 lg:w-170 lg:h-45 opacity-100 pointer-events-auto"
+                ? "p-2 border-4 rounded-xl border-gray-500 w-75 h-50 lg:w-170 lg:h-45 opacity-100 pointer-events-auto"
                 : "w-0 h-50 opacity-0 pointer-events-none"
             } `}
           >
@@ -255,23 +255,23 @@ export default function EducationalPage() {
             </form>
           </div>
           <div
-            className={`flex flex-col relative p-2 bg-slate-100 border-4 rounded-xl border-gray-600 w-75 h-40 lg:w-170 lg:h-40 transition-all duration-700 ease-in-out ${
+            className={`flex flex-col relative p-2 bg-slate-100 border-4 rounded-xl border-gray-600 w-75 h-80 mt-10 lg:w-170 lg:h-40 transition-all duration-700 ease-in-out ${
               isOpen3 === "second"
                 ? "opacity-100 pointer-events-auto"
                 : "w-0 h-50 opacity-0 pointer-events-none"
             } `}
           >
-            <h1 className="font-boldonse font-bold text-xl text-right">
-              3d Max
+            <h1 className="font-boldonse font-bold text-xl text-center lg:text-right cursor-default">
+              Sketch Up
             </h1>
-            <div className="absolute flex flex-row top-2 left-2 font-lalezar cursor-default">
-              <img className="size-9" src={LeftArrow} />
-              <h2 className="font-lalezar pt-1 font-bold text-sky-800">
+            <div className="text-center lg:absolute lg:flex lg:flex-row top-2 left-2 font-lalezar cursor-default">
+              <img className="size-9 hidden lg:block" src={LeftArrow} />
+              <h2 className="font-lalezar pt-1 font-bold text-sky-800 cursor-default">
                 برای ثبت‌نام بر روی آیکون نرم‌افزار کلیک کنید
               </h2>
             </div>
 
-            <p className="font-lalezar text-right text-md cursor-default pt-2">
+            <p className="font-lalezar text-center lg:text-right text-md cursor-default pt-2">
               اتودسک تری دی مکس یکی از قویترین و پیشرفته ترین برنامه ها در زمینه
               طراحی سه بعدی و انیمیشن سازی به شمار می رود. این نرم‌افزار به خاطر
               داشتن ابزارهای کارا و قدرتمند در بسیاری از صنایع به ویژه بازیهای
