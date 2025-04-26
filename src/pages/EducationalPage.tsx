@@ -64,7 +64,7 @@ export default function EducationalPage() {
             />
           </div>
           <div
-            className={`flex flex-col bg-slate-100 transition-all duration-700 ease-in-out absolute top-34 inset-0 lg:left-80 lg:top-5 ${
+            className={`flex flex-col bg-slate-100 transition-all duration-700 ease-in-out absolute top-34 inset-0 lg:left-80 lg:top-5 shadow-xl ${
               isOpen1 === "first"
                 ? "p-2 border-4 rounded-xl border-gray-500 w-75 h-50 lg:w-170 lg:h-45 opacity-100 pointer-events-auto"
                 : "w-0 h-50 opacity-0 pointer-events-none"
@@ -101,7 +101,7 @@ export default function EducationalPage() {
             </form>
           </div>
           <div
-            className={`flex flex-col relative p-2 bg-slate-100 border-4 rounded-xl border-gray-600 w-75 h-80 mt-10 lg:w-170 lg:h-40 transition-all duration-700 ease-in-out ${
+            className={`flex flex-col relative p-2 bg-slate-100 border-4 rounded-xl border-gray-600 w-75 h-80 mt-10 lg:w-170 lg:h-40 shadow-xl transition-all duration-700 ease-in-out ${
               isOpen1 === "second"
                 ? "opacity-100 pointer-events-auto"
                 : "w-0 h-50 opacity-0 pointer-events-none"
@@ -141,7 +141,7 @@ export default function EducationalPage() {
             />
           </div>
           <div
-            className={`flex flex-col bg-slate-100 transition-all duration-700 ease-in-out absolute top-34 inset-0 lg:right-68 lg:top-5 ${
+            className={`flex flex-col bg-slate-100 shadow-xl transition-all duration-700 ease-in-out absolute top-34 inset-0 lg:right-68 lg:top-5 ${
               isOpen2 === "first"
                 ? "p-2 border-4 rounded-xl border-gray-500 w-75 h-50 lg:w-170 lg:h-45 opacity-100 pointer-events-auto"
                 : "w-0 h-50 opacity-0 pointer-events-none"
@@ -178,7 +178,7 @@ export default function EducationalPage() {
             </form>
           </div>
           <div
-            className={`flex flex-col relative p-2 bg-slate-100 border-4 rounded-xl border-gray-600 w-75 h-80 mt-10 lg:w-170 lg:h-40 transition-all duration-700 ease-in-out ${
+            className={`flex flex-col relative p-2 shadow-xl bg-slate-100 border-4 rounded-xl border-gray-600 w-75 h-80 mt-10 lg:w-170 lg:h-40 transition-all duration-700 ease-in-out ${
               isOpen2 === "second"
                 ? "opacity-100 pointer-events-auto"
                 : "w-0 h-50 opacity-0 pointer-events-none"
@@ -218,7 +218,7 @@ export default function EducationalPage() {
             />
           </div>
           <div
-            className={`flex flex-col bg-slate-100 transition-all duration-700 ease-in-out absolute top-34 inset-0 lg:left-80 lg:top-5 ${
+            className={`flex flex-col shadow-xl bg-slate-100 transition-all duration-700 ease-in-out absolute top-34 inset-0 lg:left-80 lg:top-5 ${
               isOpen3 === "first"
                 ? "p-2 border-4 rounded-xl border-gray-500 w-75 h-50 lg:w-170 lg:h-45 opacity-100 pointer-events-auto"
                 : "w-0 h-50 opacity-0 pointer-events-none"
@@ -255,7 +255,7 @@ export default function EducationalPage() {
             </form>
           </div>
           <div
-            className={`flex flex-col relative p-2 bg-slate-100 border-4 rounded-xl border-gray-600 w-75 h-80 mt-10 lg:w-170 lg:h-40 transition-all duration-700 ease-in-out ${
+            className={`flex flex-col relative shadow-xl p-2 bg-slate-100 border-4 rounded-xl border-gray-600 w-75 h-80 mt-10 lg:w-170 lg:h-40 transition-all duration-700 ease-in-out ${
               isOpen3 === "second"
                 ? "opacity-100 pointer-events-auto"
                 : "w-0 h-50 opacity-0 pointer-events-none"

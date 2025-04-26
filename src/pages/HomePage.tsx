@@ -18,7 +18,7 @@ function HomePage() {
     <section id="home">
       <div className="relative h-screen w-screen mx-auto">
         <img
-          className="hidden md:block absolute mx-auto inset-0 w-full h-full object-fill z-0 opacity-55 border-b-4 border-stone-500"
+          className="hidden md:block overflow-x-hidden absolute mx-auto inset-0 w-[100%] h-full object-fill z-0 opacity-55 border-b-4 border-stone-500"
           src={building}
           alt="building"
         />
@@ -28,7 +28,7 @@ function HomePage() {
           alt="building"
         />
 
-        <div className="relative z-10 flex flex-col md:w-150 float-right pt-7 md:mt-30 pr-7">
+        <div className="relative overflow-x-hidden z-10 flex flex-col md:w-150 float-right pt-7 md:mt-30 pr-7">
           <h1 className="md:text-5xl text-2xl font-extrabold font-lalezar text-white md:text-black text-right cursor-default">
             فضا را تصور کن
           </h1>

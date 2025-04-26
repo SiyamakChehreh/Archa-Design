@@ -8,7 +8,7 @@ import Phone from "../assets/images/phone.svg";
 
 export default function Footer() {
   return (
-    <footer className="md:h-100 md:w-screen bg-amber-50 flex flex-col justify-start pt-2 items-center relative border-t-8 border-double border-neutral-500">
+    <footer className="overflow-x-hidden md:h-100 md:w-screen bg-amber-50 flex flex-col justify-start pt-2 items-center relative border-t-8 border-double border-neutral-500">
       <div>
         <h1 className="font-boldonse text-md md:text-xl pt-1 md:pt-6 cursor-default">
           Contact Us
