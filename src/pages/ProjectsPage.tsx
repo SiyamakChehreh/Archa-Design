@@ -28,10 +28,7 @@ export default function ProjectsPage() {
   const [isActive, setIsActive] = useState<number | null>(null);
 
   return (
-    <section
-      id="projects"
-      className="h-auto w-screen mt-59 md:mt-0 scroll-mt-30"
-    >
+    <section id="projects" className="h-auto w-screen md:mt-0 scroll-mt-30">
       <div className="h-auto w-screen bg-gray-200 grid grid-cols-1 lg:grid-cols-2 gap-2 pb-4">
         {[album1, album2, album1, album2].map((album, index) => (
           <ImageSlider

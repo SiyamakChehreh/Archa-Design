@@ -36,7 +36,7 @@ const ImageSlider = ({
   const slider = (
     <div
       onClick={onClick}
-      className={`relative border-6 border-yellow-100 bg-amber-50 mt-4 md:mt-5 md:mb-8 mx-auto overflow-hidden rounded-2xl shadow-lg transition-all duration-700 cursor-pointer ${
+      className={`relative border-6 border-gray-600 bg-amber-50 mt-4 md:mt-5 md:mb-8 mx-auto overflow-hidden rounded-2xl shadow-lg transition-all duration-700 cursor-pointer ${
         isActive
           ? "w-[80vw] h-[70vh] md:w-[70vw] md:h-[70vh]"
           : "w-60 h-64 md:max-w-xl md:w-full md:h-78 hover:scale-[1.09]"
