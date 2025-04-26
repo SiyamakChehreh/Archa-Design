@@ -6,6 +6,7 @@ import Footer from "./components/Footer.tsx";
 import AboutPage from "./pages/AboutPage.tsx";
 import ArchitectsPage from "./pages/ArchitectsPage.tsx";
 import ProjectsPage from "./pages/ProjectsPage.tsx";
+import EducationalPage from "./pages/EducationalPage.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -13,6 +14,7 @@ createRoot(document.getElementById("root")!).render(
     <AboutPage />
     <ArchitectsPage />
     <ProjectsPage />
+    <EducationalPage />
     <Footer />
   </StrictMode>
 );

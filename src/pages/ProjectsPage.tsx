@@ -1,3 +1,4 @@
+import { useState } from "react";
 import ImageSlider from "../components/ImageSlider";
 import Jurassic from "../assets/images/jurassic-park.png";
 import Building from "../assets/images/building.jpg";
@@ -24,13 +25,24 @@ const content = (
 );
 
 export default function ProjectsPage() {
+  const [isActive, setIsActive] = useState<number | null>(null);
+
   return (
-    <section id="projects" className="h-screen w-screen">
-      <div className="h-screen w-screen bg-gray-200 grid grid-cols-1 md:grid-cols-2 gap-2 overflow-y-scroll">
-        <ImageSlider images={album1} content={content} />
-        <ImageSlider images={album2} content={content} />
-        <ImageSlider images={album1} content={content} />
-        <ImageSlider images={album1} content={content} />
+    <section
+      id="projects"
+      className="h-auto w-[100%] overflow-x-hidden md:mt-0 scroll-mt-30"
+    >
+      <div className="h-auto w-screen bg-gray-200 grid grid-cols-1 lg:grid-cols-2 gap-2 pb-4">
+        {[album1, album2, album1, album2].map((album, index) => (
+          <ImageSlider
+            key={index}
+            content={content}
+            images={album}
+            onClick={() => setIsActive(index)}
+            isActive={isActive === index}
+            onClose={() => setIsActive(null)}
+          />
+        ))}
       </div>
     </section>
   );

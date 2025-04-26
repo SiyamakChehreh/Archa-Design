@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import X from "../assets/images/x.svg";
 import instagram from "../assets/images/instagram.svg";
@@ -9,7 +10,22 @@ import HamburgerMenu from "../assets/images/hamburger-menu-icon.svg";
 //https://stackoverflow.com/questions/61196420/react-navigation-that-will-smooth-scroll-to-section-of-the-page
 
 export default function Header() {
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 80);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  });
+
+  const isHome = location.pathname === "/";
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -18,18 +34,38 @@ export default function Header() {
   return (
     <div>
       <div className="bg-stone-100">
-        <nav className="hidden mx-auto md:flex flex-row fixed top-0 left-0 z-50 px-5 justify-around bg-amber-100 h-30 w-screen border-b-5 border-indigo-200 items-center opacity-20 hover:opacity-90 transition-all duration-700 shadow-lg">
+        <nav
+          className={`${
+            isHome ? (isScrolled ? "opacity-20" : "opacity-90") : "opacity-20"
+          } hidden mx-auto md:flex overflow-hidden flex-row h-30 w-full fixed top-0 left-0 z-50 px-5 justify-between bg-amber-100 border-b-5 border-indigo-200 items-center hover:opacity-90 transition-all duration-700 shadow-md`}
+        >
           <div className="text-3xl font-boldonse me-2">
-            <Link to="/">
+            <Link
+              to="/"
+              onClick={(e) => {
+                let home = document.getElementById("home");
+                e.preventDefault();
+                home && home.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
               Archa
               <span className="text-sky-600 text-3xl">Design</span>
             </Link>
           </div>
           <ul className="flex flex-row gap-9 items-center ml-20">
-            <li className="border-4 rounded-lg border-indigo-200 hover:border-stone-500 hover:font-bold px-6 py-4 hover:bg-gray-300 transition-all duration-600 text-xl font-lalezar hover:scale-[1.1]">
-              <Link to="educational">برنامه های آموزشی</Link>
+            <li className="border-4 rounded-md border-indigo-200 hover:border-stone-500 hover:font-bold px-6 py-4 hover:bg-gray-300 transition-all duration-600 text-xl font-lalezar hover:scale-[1.1]">
+              <Link
+                to="educational"
+                onClick={(e) => {
+                  let education = document.getElementById("educational");
+                  e.preventDefault();
+                  education && education.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                برنامه های آموزشی
+              </Link>
             </li>
-            <li className="border-4 rounded-lg border-indigo-200 hover:border-stone-500 hover:font-bold px-6 py-4 hover:bg-gray-300 transition-all duration-600 text-xl font-lalezar hover:scale-[1.1]">
+            <li className="border-4 rounded-md border-indigo-200 hover:border-stone-500 hover:font-bold px-6 py-4 hover:bg-gray-300 transition-all duration-600 text-xl font-lalezar hover:scale-[1.1]">
               <Link
                 to="/about"
                 onClick={(e) => {
@@ -41,7 +77,7 @@ export default function Header() {
                 درباره ی ما
               </Link>
             </li>
-            <li className="border-4 rounded-lg border-indigo-200 hover:border-stone-500 hover:font-bold px-6 py-4 hover:bg-gray-300 transition-all duration-600  text-xl font-lalezar hover:scale-[1.1]">
+            <li className="border-4 rounded-md border-indigo-200 hover:border-stone-500 hover:font-bold px-6 py-4 hover:bg-gray-300 transition-all duration-600  text-xl font-lalezar hover:scale-[1.1]">
               <Link
                 to="/architects"
                 onClick={(e) => {
@@ -54,8 +90,17 @@ export default function Header() {
                 تیم معماران
               </Link>
             </li>
-            <li className="border-4 rounded-lg border-indigo-200 hover:border-stone-500 hover:font-bold px-6 py-4 hover:bg-gray-300 transition-all duration-600 text-xl font-lalezar hover:scale-[1.1]">
-              <Link to="/projects">پروژه های ما</Link>
+            <li className="border-4 rounded-md border-indigo-200 hover:border-stone-500 hover:font-bold px-6 py-4 hover:bg-gray-300 transition-all duration-600 text-xl font-lalezar hover:scale-[1.1]">
+              <Link
+                to="/projects"
+                onClick={(e) => {
+                  let projects = document.getElementById("projects");
+                  e.preventDefault();
+                  projects && projects.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                پروژه های ما
+              </Link>
             </li>
           </ul>
 
@@ -141,6 +186,17 @@ export default function Header() {
                 }}
               >
                 پروژه های ما
+              </Link>
+              <Link
+                to="/educational"
+                className="block py-2 text-gray-700 hover:text-blue-600 font-lalezar font-bold"
+                onClick={(e) => {
+                  let education = document.getElementById("educational");
+                  e.preventDefault();
+                  education && education.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                برنامه‌های آموزشی
               </Link>
             </div>
           )}
