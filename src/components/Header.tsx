@@ -33,13 +33,13 @@ export default function Header() {
 
   return (
     <div>
-      <div className="bg-stone-100">
+      <div className="bg-stone-100 max-w-[1920px] mx-auto w-screen">
         <nav
           className={`${
             isHome ? (isScrolled ? "opacity-20" : "opacity-90") : "opacity-20"
-          } hidden mx-auto md:flex overflow-hidden flex-row h-30 w-full fixed top-0 left-0 z-50 px-5 justify-between bg-amber-100 border-b-5 border-indigo-200 items-center hover:opacity-90 transition-all duration-700 shadow-md`}
+          } hidden mx-auto md:flex flex-row h-30 w-screen max-w-[1920px] fixed top-0 z-50 px-5  bg-amber-100 border-b-5 border-indigo-200 justify-center items-center hover:opacity-90 transition-all duration-700 shadow-md`}
         >
-          <div className="text-3xl font-boldonse me-2">
+          <div className="text-3xl font-boldonse ml-2">
             <Link
               to="/"
               onClick={(e) => {
@@ -52,8 +52,8 @@ export default function Header() {
               <span className="text-sky-600 text-3xl">Design</span>
             </Link>
           </div>
-          <ul className="flex flex-row gap-9 items-center ml-20">
-            <li className="border-4 rounded-md border-indigo-200 hover:border-stone-500 hover:font-bold px-6 py-4 hover:bg-gray-300 transition-all duration-600 text-xl font-lalezar hover:scale-[1.1]">
+          <ul className="flex flex-row gap-12 items-center ml-20">
+            <li className="border-4 rounded-xl border-indigo-200 hover:border-stone-500 hover:font-bold px-6 py-4 hover:bg-gray-300 transition-all duration-600 text-xl font-lalezar hover:scale-[1.1]">
               <Link
                 to="educational"
                 onClick={(e) => {
@@ -65,7 +65,7 @@ export default function Header() {
                 برنامه های آموزشی
               </Link>
             </li>
-            <li className="border-4 rounded-md border-indigo-200 hover:border-stone-500 hover:font-bold px-6 py-4 hover:bg-gray-300 transition-all duration-600 text-xl font-lalezar hover:scale-[1.1]">
+            <li className="border-4 rounded-xl border-indigo-200 hover:border-stone-500 hover:font-bold px-6 py-4 hover:bg-gray-300 transition-all duration-600 text-xl font-lalezar hover:scale-[1.1]">
               <Link
                 to="/about"
                 onClick={(e) => {
@@ -77,7 +77,7 @@ export default function Header() {
                 درباره ی ما
               </Link>
             </li>
-            <li className="border-4 rounded-md border-indigo-200 hover:border-stone-500 hover:font-bold px-6 py-4 hover:bg-gray-300 transition-all duration-600  text-xl font-lalezar hover:scale-[1.1]">
+            <li className="border-4 rounded-xl border-indigo-200 hover:border-stone-500 hover:font-bold px-6 py-4 hover:bg-gray-300 transition-all duration-600  text-xl font-lalezar hover:scale-[1.1]">
               <Link
                 to="/architects"
                 onClick={(e) => {
@@ -90,7 +90,7 @@ export default function Header() {
                 تیم معماران
               </Link>
             </li>
-            <li className="border-4 rounded-md border-indigo-200 hover:border-stone-500 hover:font-bold px-6 py-4 hover:bg-gray-300 transition-all duration-600 text-xl font-lalezar hover:scale-[1.1]">
+            <li className="border-4 rounded-xl border-indigo-200 hover:border-stone-500 hover:font-bold px-6 py-4 hover:bg-gray-300 transition-all duration-600 text-xl font-lalezar hover:scale-[1.1]">
               <Link
                 to="/projects"
                 onClick={(e) => {

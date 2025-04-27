@@ -49,8 +49,11 @@ export default function EducationalPage() {
   };
 
   return (
-    <section id="educational" className="scroll-mt-30">
-      <div className="h-auto w-screen basis-auto p-10 flex flex-col gap-5 lg:gap-12 bg-gray-200">
+    <section
+      id="educational"
+      className="scroll-mt-30 h-auto w-screen max-w-[1920px] mx-auto"
+    >
+      <div className="basis-auto p-10 flex flex-col gap-5 lg:gap-12 bg-gray-200">
         <div className="flex-col relative place-items-center lg:flex lg:flex-row mx-auto lg:w-260 lg:justify-around">
           <div>
             <img

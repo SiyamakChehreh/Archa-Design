@@ -3,11 +3,11 @@ import mountain from "../assets/mountain.jpg";
 export default function ArchitectsPage() {
   return (
     <section
-      className="h-auto w-screen overflow-x-hidden scroll-mt-30"
+      className="h-auto w-screen max-w-[1920px] mx-auto scroll-mt-30"
       id="architects"
     >
-      <div className="flex flex-col overflow-hidden h-auto w-screen gap-10 lg:gap-10 bg-gray-200">
-        <div className="group h-auto lg:h-75 gap-5 lg:gap-15 w-auto bg-gray-200 flex flex-col lg:flex-row justify-center items-center perspective-normal">
+      <div className="flex flex-col overflow-hidden gap-10 lg:gap-10 bg-gray-200">
+        <div className="group lg:h-75 gap-5 lg:gap-15 w-auto bg-gray-200 flex flex-col lg:flex-row justify-center items-center perspective-normal">
           <div className="h-25 w-35 lg:h-60 lg:w-75 animate-rotate-border bg-conic/[from_var(--border-angle)] from-stone-300 via-amber-400 to-stone-300 rounded-xl relative group-hover:rotate-y-360 transform-3d transition-all duration-1000 shadow-2xl">
             <img
               className="h-23 w-33 lg:h-58 lg:w-73 top-1 left-1 rounded-xl absolute"
@@ -30,8 +30,8 @@ export default function ArchitectsPage() {
             </div>
           </div>
         </div>
-        <div className="h-auto lg:h-auto mx-auto w-screen ">
-          <div className="h-auto lg:h-auto mx-auto w-screen bg-gray-200 flex flex-row flex-wrap overflow-hidden items-end justify-center gap-10 lg:gap-25 lg:pl-18 pt-15">
+        <div>
+          <div className=" bg-gray-200 flex flex-row flex-wrap overflow-hidden items-end justify-center gap-10 lg:gap-25 lg:pl-18 pt-15">
             <div className="group h-50 w-40 lg:h-70 lg:w-60 mb-4 lg:mb-10 border-10 border-fuchsia-100 rounded-lg bg-stone-300 relative perspective-normal opacity-60 hover:opacity-100 hover:scale-[1.1] transition-all duration-800 drop-shadow-2xl">
               <div className="absolute bg-amber-600 size-22 lg:size-45 rounded-full -top-9 -left-10 lg:-top-18 lg:-left-20 transform-3d group-hover:rotate-x-360 transition-all duration-800 animate-rotate-border bg-conic/[from_var(--border-angle)] from-stone-300 via-amber-400 to-stone-300">
                 <img

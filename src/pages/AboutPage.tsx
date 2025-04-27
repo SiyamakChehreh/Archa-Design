@@ -3,9 +3,12 @@ import building from "../assets/images/architecture/building3.jpg";
 
 export default function AboutPage() {
   return (
-    <section id="about" className="bg-gray-200 scroll-mt-30">
+    <section
+      id="about"
+      className="bg-gray-200 scroll-mt-30 h-auto max-w-[1920px] mx-auto"
+    >
       <div className="py-16">
-        <div className="flex flex-col gap-15 basis-auto lg:flex lg:flex-row mx-auto my-auto justify-around items-center w-screen h-auto bg-gray-200 perspective-normal">
+        <div className="flex flex-col gap-15 lg:flex lg:flex-row justify-around items-center bg-gray-200 perspective-normal">
           <div className="group h-90 w-70 lg:h-130 lg:w-90 border-7 border-gray-600 rounded-4xl bg-amber-50 flex flex-col place-items-center opacity-45 hover:opacity-100 transform-3d lg:hover:rotate-y-3 transition-all duration-700 scale-[1.02] hover:scale-[0.9] shadow-2xl">
             <img
               className="w-40 h-28 lg:h-54 lg:w-80 mx-15 -mt-15 border-6 rounded-2xl border-cyan-800 shadow-2xl scale-[0.8] group-hover:scale-[1.06] transition-all duration-700"

@@ -30,9 +30,9 @@ export default function ProjectsPage() {
   return (
     <section
       id="projects"
-      className="h-auto w-[100%] overflow-x-hidden md:mt-0 scroll-mt-30"
+      className="h-auto w-screen md:mt-0 scroll-mt-30 max-w-[1920px] mx-auto"
     >
-      <div className="h-auto w-screen bg-gray-200 grid grid-cols-1 lg:grid-cols-2 gap-2 pb-4">
+      <div className="bg-gray-200 grid grid-cols-1 lg:grid-cols-2 pb-4">
         {[album1, album2, album1, album2].map((album, index) => (
           <ImageSlider
             key={index}
