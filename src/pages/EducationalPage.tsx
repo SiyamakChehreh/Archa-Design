@@ -34,8 +34,6 @@ export default function EducationalPage() {
     setPhone("");
   };
 
-  console.log(users);
-
   const handleChangeName = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };
