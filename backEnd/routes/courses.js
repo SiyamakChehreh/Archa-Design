@@ -15,6 +15,6 @@ router.get("/", getCourses);
 router.get("/:name", getCourse);
 
 //sign up in a course
-router.post("/:id", signupCourse);
+router.post("/:id/join", signupCourse);
 
 module.exports = router;

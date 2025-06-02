@@ -1,19 +1,40 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logout, RootState } from "../store";
 import X from "../assets/images/x.svg";
 import instagram from "../assets/images/instagram.svg";
 import facebook from "../assets/images/facebook.svg";
 import Telegram from "../assets/images/telegram3.svg";
 import HamburgerMenu from "../assets/images/hamburger-menu-icon.svg";
-
-//https://stackoverflow.com/questions/61196420/react-navigation-that-will-smooth-scroll-to-section-of-the-page
+import { Modal } from "./Modal";
+import { LoginForm } from "./LoginForm";
+import { SignupForm } from "./SignupForm";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [isLoginMode, setLoginMode] = useState(true);
+
   const location = useLocation();
+  const dispatch = useDispatch();
+
+  const { isAuthenticated, email } = useSelector(
+    (state: RootState) => state.auth
+  );
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
+  const openModal = (login: boolean) => {
+    setLoginMode(login);
+    setModalOpen(true);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -103,23 +124,72 @@ export default function Header() {
               </Link>
             </li>
           </ul>
+          {isAuthenticated ? (
+            <div className="flex-col justify-items-center justify-around ml-5">
+              <div className="font-underdog font-bold text-md">{email}</div>
+              <button
+                onClick={handleLogout}
+                className="hover:bg-rose-300 border-2 border-indigo-200 rounded-2xl px-4 py-2 mt-4 font-lalezar transition-all duration-700 hover:scale-[1.3]"
+              >
+                خروج
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => openModal(true)}
+              className="ml-15 border-4 rounded-4xl bg-sky-500 border-indigo-200 hover:border-stone-700 hover:font-bold px-4 py-2 hover:bg-sky-400 transition-all duration-600 text-xl font-lalezar hover:scale-[1.1]"
+            >
+              عضویت/ورود
+            </button>
+          )}
+          <Modal
+            isLoginMode={isLoginMode}
+            isOpen={isModalOpen}
+            onClose={() => setModalOpen(false)}
+          >
+            <div className="flex justify-center mb-4">
+              <button
+                onClick={() => setLoginMode(true)}
+                className={`px-4 py-2 rounded-l-lg font-lalezar ${
+                  isLoginMode ? "bg-blue-500 text-white" : "bg-gray-200"
+                }`}
+              >
+                ورود
+              </button>
+              <button
+                onClick={() => setLoginMode(false)}
+                className={`px-4 py-2 rounded-r-lg font-lalezar ${
+                  !isLoginMode ? "bg-indigo-400 text-white" : "bg-gray-200"
+                }`}
+              >
+                عضویت
+              </button>
+            </div>
 
-          <ul className="flex flex-row mx-auto my-auto md:gap-15 md:place-items-center">
-            <li className="hover:font-bold flex gap-7">
-              <Link to="#">
-                <img className="size-10" src={X} />
-              </Link>
-              <Link className="size-10" to="#">
-                <img src={instagram} />
-              </Link>
-              <Link to="#">
-                <img className="size-10" src={facebook} />
-              </Link>
-              <Link to="#">
-                <img className="size-11 mb-1" src={Telegram} />
-              </Link>
-            </li>
-          </ul>
+            <AnimatePresence mode="wait">
+              {isLoginMode ? (
+                <motion.div
+                  key="login"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.25 }}
+                >
+                  <LoginForm onClose={() => setModalOpen(false)} />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="signup"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.25 }}
+                >
+                  <SignupForm onClose={() => setModalOpen(false)} />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </Modal>
         </nav>
         <nav className="py-3">
           <div className="md:hidden flex justify-around items-start">
@@ -129,7 +199,7 @@ export default function Header() {
                 <span className="text-sky-600 text-md">Design</span>
               </Link>
             </div>
-            <div className="flex gap-4 mb-2">
+            <div className="flex gap-4 mb-2 ml-15 mx-auto">
               <Link to="#">
                 <img className="size-6" src={X} />
               </Link>
@@ -143,9 +213,75 @@ export default function Header() {
                 <img className="size-7" src={Telegram} />
               </Link>
             </div>
-            <button className="">
+            {isAuthenticated ? (
+              <div className="">
+                <button
+                  onClick={handleLogout}
+                  className="hover:bg-gray-400 border-2 border-blue-500 rounded-2xl mx-auto px-2 mr-2 font-lalezar transition-all duration-700 hover:scale-[1.1]"
+                >
+                  خروج
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={() => openModal(true)}
+                className="border-blue-500 border-2 mx-auto px-2 rounded-2xl bg-gray-300 font-lalezar"
+              >
+                عضویت/ورود
+              </button>
+            )}
+
+            <Modal
+              isLoginMode={isLoginMode}
+              isOpen={isModalOpen}
+              onClose={() => setModalOpen(false)}
+            >
+              <div className="flex justify-center mb-4">
+                <button
+                  onClick={() => setLoginMode(true)}
+                  className={`px-4 py-2 rounded-l-lg font-lalezar ${
+                    isLoginMode ? "bg-blue-500 text-white" : "bg-gray-200"
+                  }`}
+                >
+                  ورود
+                </button>
+                <button
+                  onClick={() => setLoginMode(false)}
+                  className={`px-4 py-2 rounded-r-lg font-lalezar ${
+                    !isLoginMode ? "bg-indigo-400 text-white" : "bg-gray-200"
+                  }`}
+                >
+                  عضویت
+                </button>
+              </div>
+
+              <AnimatePresence mode="wait">
+                {isLoginMode ? (
+                  <motion.div
+                    key="login"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.25 }}
+                  >
+                    <LoginForm onClose={() => setModalOpen(false)} />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="signup"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.25 }}
+                  >
+                    <SignupForm onClose={() => setModalOpen(false)} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </Modal>
+            <button className="mr-6">
               <img
-                className="size-6 right-4"
+                className="size-6 right-4 hover:scale-[1.2] transition-all duration-700"
                 src={HamburgerMenu}
                 onClick={handleClick}
               />
