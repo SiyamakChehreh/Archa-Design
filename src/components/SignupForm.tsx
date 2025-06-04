@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useSignupMutation } from "../store/index";
+import { loginSuccess } from "../store/index";
+import { useDispatch } from "react-redux";
 
 export const SignupForm = ({ onClose }: { onClose: () => void }) => {
   const [email, setEmail] = useState("");
@@ -8,6 +10,8 @@ export const SignupForm = ({ onClose }: { onClose: () => void }) => {
   const [error, setError] = useState("");
 
   const [signup, { isLoading }] = useSignupMutation();
+
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -19,6 +23,7 @@ export const SignupForm = ({ onClose }: { onClose: () => void }) => {
 
     try {
       const res = await signup({ email, password }).unwrap();
+      dispatch(loginSuccess({ token: res.token, email }));
       console.log("Signup success:", res);
       onClose();
     } catch (err: any) {
@@ -51,11 +56,15 @@ export const SignupForm = ({ onClose }: { onClose: () => void }) => {
         placeholder="Repeat Password"
         className="p-2 border rounded"
       />
+      {error && <p className="text-red-300 text-sm font-boldonse">{error}</p>}
       <button
+        disabled={isLoading}
         type="submit"
-        className="bg-indigo-400 text-white py-2 rounded hover:bg-indigo-600 transition-all duration-700 font-lalezar"
+        className={`bg-indigo-400 text-white py-2 rounded transition-all duration-700 font-lalezar ${
+          isLoading ? "opacity-50 cursor-not-allowed" : "hover:bg-indigo-600"
+        }  `}
       >
-        عضویت
+        {isLoading ? "...در حال ثبت نام" : "عضویت"}
       </button>
     </form>
   );

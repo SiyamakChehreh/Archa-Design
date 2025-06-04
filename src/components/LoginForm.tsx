@@ -42,11 +42,13 @@ export const LoginForm = ({ onClose }: { onClose: () => void }) => {
         placeholder="Password"
         className="p-2 border rounded"
       />
+      {error && <p className="text-red-300 text-sm font-boldonse">{error}</p>}
       <button
+        disabled={isLoading}
         type="submit"
         className="bg-blue-500 text-white py-2 rounded hover:bg-blue-700 font-lalezar transition-all duration-700"
       >
-        ورود
+        {isLoading ? "...در حال ورود به حساب کاربری" : "ورود"}
       </button>
     </form>
   );

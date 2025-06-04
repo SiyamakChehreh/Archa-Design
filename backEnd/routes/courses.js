@@ -1,20 +1,15 @@
 const express = require("express");
-
-const {
-  signupCourse,
-  getCourses,
-  getCourse,
-} = require("../controllers/coursesControllers");
-
 const router = express.Router();
+const Course = require("../models/coursesModel.js");
 
-//getting all the available educational courses
-router.get("/", getCourses);
-
-//getting a specific course by it's name
-router.get("/:name", getCourse);
-
-//sign up in a course
-router.post("/:id/join", signupCourse);
+// Get all courses
+router.get("/courses", async (req, res) => {
+  try {
+    const courses = await Course.find();
+    res.status(200).json(courses);
+  } catch (error) {
+    res.status(500).json({ message: "Server Error" });
+  }
+});
 
 module.exports = router;
