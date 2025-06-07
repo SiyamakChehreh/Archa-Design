@@ -1,5 +1,8 @@
-import { ChangeEvent, useState } from "react";
-import { useGetCoursesQuery, useEnrollInCourseMutation } from "../store/index";
+import { useState } from "react";
+import {
+  useGetAllCoursesQuery,
+  useEnrollInCourseMutation,
+} from "../store/index";
 import max from "../assets/images/3d max.svg";
 import autocad from "../assets/images/autocad.svg";
 import sketchup from "../assets/images/sketchup.svg";
@@ -23,55 +26,86 @@ export default function EducationalPage() {
   const [lastName3, setLastName3] = useState<string>("");
   const [phone3, setPhone3] = useState<string>("");
 
-  const { data: courses, isLoading } = useGetCoursesQuery();
+  const { data: courses, isLoading } = useGetAllCoursesQuery();
   const [enrollInCourse] = useEnrollInCourseMutation();
 
   const courseId1 = courses?.[0]?._id;
   const courseId2 = courses?.[1]?._id;
   const courseId3 = courses?.[2]?._id;
 
-  console.log(courses);
-
   const handleSubmit1 = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!name1 || !lastName1 || !phone1) return;
 
-    await enrollInCourse({
-      courseId: courseId1,
-      enrollmentData: { name: name1, lastName: lastName1, phoneNumber: phone1 },
-    });
+    try {
+      await enrollInCourse({
+        courseId: courseId1,
+        enrollmentData: {
+          name: name1,
+          lastName: lastName1,
+          phoneNumber: phone1,
+        },
+      }).unwrap();
 
-    setName1("");
-    setLastName1("");
-    setPhone1("");
+      alert("ثبت نام موفقیت آمیز بود");
+
+      setName1("");
+      setLastName1("");
+      setPhone1("");
+    } catch (error) {
+      console.error("Enrolment failed:", error);
+      alert("ثبت نام انجام نشد. لطفا دوباره تلاش کنید");
+    }
   };
 
   const handleSubmit2 = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!name2 || !lastName2 || !phone2) return;
 
-    await enrollInCourse({
-      courseId: courseId2,
-      enrollmentData: { name: name2, lastName: lastName2, phoneNumber: phone2 },
-    });
+    try {
+      await enrollInCourse({
+        courseId: courseId2,
+        enrollmentData: {
+          name: name2,
+          lastName: lastName2,
+          phoneNumber: phone2,
+        },
+      }).unwrap();
 
-    setName2("");
-    setLastName2("");
-    setPhone2("");
+      alert("ثبت نام موفقیت آمیز بود");
+
+      setName2("");
+      setLastName2("");
+      setPhone2("");
+    } catch (error) {
+      console.error("Enrolment failed:", error);
+      alert("ثبت نام انجام نشد. لطفا دوباره تلاش کنید");
+    }
   };
 
   const handleSubmit3 = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!name3 || !lastName3 || !phone3) return;
 
-    await enrollInCourse({
-      courseId: courseId3,
-      enrollmentData: { name: name3, lastName: lastName3, phoneNumber: phone3 },
-    });
+    try {
+      await enrollInCourse({
+        courseId: courseId3,
+        enrollmentData: {
+          name: name3,
+          lastName: lastName3,
+          phoneNumber: phone3,
+        },
+      }).unwrap();
 
-    setName3("");
-    setLastName3("");
-    setPhone3("");
+      alert("ثبت نام موفقیت آمیز بود");
+
+      setName3("");
+      setLastName3("");
+      setPhone3("");
+    } catch (error) {
+      console.error("Enrolment failed:", error);
+      alert("ثبت نام انجام نشد. لطفا دوباره تلاش کنید");
+    }
   };
 
   return (

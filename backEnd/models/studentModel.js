@@ -1,9 +1,16 @@
+require("./coursesModel");
+require("./userModel");
 const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
 const studentSchema = new Schema(
   {
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
     name: { type: String, required: true },
     lastName: { type: String, required: true },
     phoneNumber: {
@@ -21,6 +28,9 @@ const studentSchema = new Schema(
 );
 
 // Prevent duplicate enrollment (same phone number in same course)
-studentSchema.index({ phoneNumber: 1, courseId: 1 }, { unique: true });
+studentSchema.index(
+  { phoneNumber: 1, courseId: 1, userId: 1 },
+  { unique: true }
+);
 
 module.exports = mongoose.model("Student", studentSchema);

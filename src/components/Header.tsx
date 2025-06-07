@@ -9,6 +9,7 @@ import facebook from "../assets/images/facebook.svg";
 import Telegram from "../assets/images/telegram3.svg";
 import HamburgerMenu from "../assets/images/hamburger-menu-icon.svg";
 import { Modal } from "./Modal";
+import MyCoursesModal from "./MyCoursesModal";
 import { LoginForm } from "./LoginForm";
 import { SignupForm } from "./SignupForm";
 import { motion, AnimatePresence } from "framer-motion";
@@ -16,6 +17,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const [isModalOpen, setModalOpen] = useState(false);
   const [isLoginMode, setLoginMode] = useState(true);
@@ -47,6 +49,10 @@ export default function Header() {
   });
 
   const isHome = location.pathname === "/";
+
+  const handleShowCourses = () => {
+    setOpen(!open);
+  };
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -127,12 +133,21 @@ export default function Header() {
           {isAuthenticated ? (
             <div className="flex-col justify-items-center justify-around ml-5">
               <div className="font-underdog font-bold text-md">{email}</div>
-              <button
-                onClick={handleLogout}
-                className="hover:bg-rose-300 border-2 border-indigo-200 rounded-2xl px-4 py-2 mt-4 font-lalezar transition-all duration-700 hover:scale-[1.3]"
-              >
-                خروج
-              </button>
+              <div className="flex flex-row gap-6">
+                <button
+                  onClick={handleLogout}
+                  className="hover:bg-rose-300 border-2 border-indigo-200 rounded-2xl px-4 py-2 mt-4 font-lalezar transition-all duration-700 hover:scale-[1.3]"
+                >
+                  خروج
+                </button>
+                <button
+                  onClick={handleShowCourses}
+                  className="hover:bg-rose-300 border-2 border-indigo-200 rounded-2xl px-4 py-2 mt-4 font-lalezar transition-all duration-700 hover:scale-[1.3]"
+                >
+                  دوره ها
+                </button>
+                {open && <MyCoursesModal onClose={() => setOpen(false)} />}
+              </div>
             </div>
           ) : (
             <button

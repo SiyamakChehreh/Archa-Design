@@ -1,13 +1,15 @@
 const express = require("express");
-const router = express.Router();
 const Course = require("../models/coursesModel");
 const Student = require("../models/studentModel");
 const authenticateUser = require("../middleware/authMiddleware.js");
+
+const router = express.Router();
 
 // Enroll a student in a course
 router.post("/courses/:courseId/enroll", authenticateUser, async (req, res) => {
   const { courseId } = req.params;
   const { name, lastName, phoneNumber } = req.body;
+  const userId = req.user._id;
 
   if (!name || !lastName || !phoneNumber) {
     return res.status(400).json({ message: "تمام فیلدها الزامی است" });
@@ -24,6 +26,7 @@ router.post("/courses/:courseId/enroll", authenticateUser, async (req, res) => {
       lastName,
       phoneNumber,
       courseId,
+      userId,
     });
 
     await newStudent.save();
