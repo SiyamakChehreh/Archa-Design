@@ -16,6 +16,7 @@ const getCoursesForUser = async (req, res) => {
   }
 };
 
+//Delete an enrolled course from user's profile
 const deleteCoursesForUser = async (req, res) => {
   const { courseId } = req.params;
 

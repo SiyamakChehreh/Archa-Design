@@ -22,14 +22,16 @@ const MyCoursesModal: React.FC<ModalProps> = ({ onClose }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-      <div className="bg-white p-6 rounded-lg w-96">
-        <h2 className="text-xl font-bold mb-4">My Enrolled Courses</h2>
+      <div className="bg-white p-6 rounded-lg w-96 flex-col justify-items-center">
+        <h2 className="text-xl font-bold mb-4 font-lalezar">
+          دوره‌های ثبت‌نام شده
+        </h2>
 
         {isLoading && <p>Loading...</p>}
         {isError && <p>Something went wrong.</p>}
 
         {data && (
-          <ul className="space-y-2">
+          <ul className="space-y-2 w-92">
             {data.map((course: any) => (
               <li
                 key={course._id}
@@ -49,9 +51,9 @@ const MyCoursesModal: React.FC<ModalProps> = ({ onClose }) => {
 
         <button
           onClick={onClose}
-          className="mt-4 px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700 transition"
+          className="mt-4 px-4 py-2 mx-auto bg-gray-800 text-white rounded hover:bg-gray-700 transition font-lalezar"
         >
-          Close
+          بستن
         </button>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+/*import { useState } from "react";
 import {
   useGetAllCoursesQuery,
   useEnrollInCourseMutation,
@@ -127,7 +127,7 @@ export default function EducationalPage() {
               onClick={() => {
                 setIsOpen1(isOpen1 === "first" ? "second" : "first");
               }}
-              src={max}
+              src={autocad}
             />
           </div>
           <div
@@ -187,13 +187,13 @@ export default function EducationalPage() {
             </div>
 
             <p className="font-lalezar text-center lg:text-right text-md cursor-default pt-2">
-              اتودسک تری دی مکس یکی از قویترین و پیشرفته ترین برنامه‌ها در زمینه
-              طراحی سه بعدی و انیمیشن سازی به شمار می رود. این نرم‌افزار به خاطر
-              داشتن ابزارهای کارا و قدرتمند در بسیاری از صنایع به ویژه بازیهای
-              رایانه ای و طراحی و خلق جلوه های ویژه در فیلمها بسیار پرکاربرد
-              است.مهندسان می توانند به راحتی طراحیهای خود در محیط اتوکد را وارد
-              این برنامه کرده و نمای سه بعدی طرح خود را ایجاد کنند و با چاپ آن،
-              نمای کلی طرح خود را قبل از اجرا به مشتریان خود نشان دهند
+              اتودسک اتوکد نرم‌افزاری که برای ترسیم نقشه های مهندسی و صنعتی به
+              کار می‌رود. مطمئنا مهندسان نقشه کشی و عمران این ابزار را بسیار
+              بهتر از افراد معمولی می شناسند. کاربران اتوکد امکان استفاده از
+              محیط‌های دو بعدی و سه بعدی را دارند. در همه جای جهان اگر قرار باشد
+              نقشه ای کشیده شود ، همه آن را با محصول اتوکد ترسیم خواهند کرد
+              سهولت کار با ابزار اتوکد و سبک بودن این نرم افزار، آن را در میان
+              محبوب ترین برنامه های نفشه کشی در میان مهندسین قرار داده است
             </p>
           </div>
         </div>
@@ -210,7 +210,7 @@ export default function EducationalPage() {
               onClick={() => {
                 setIsOpen2(isOpen2 === "first" ? "second" : "first");
               }}
-              src={autocad}
+              src={max}
             />
           </div>
           <div
@@ -270,13 +270,13 @@ export default function EducationalPage() {
             </div>
 
             <p className="font-lalezar text-center lg:text-right text-md cursor-default pt-2">
-              اتودسک اتوکد نرم‌افزاری که برای ترسیم نقشه های مهندسی و صنعتی به
-              کار می‌رود. مطمئنا مهندسان نقشه کشی و عمران این ابزار را بسیار
-              بهتر از افراد معمولی می شناسند. کاربران اتوکد امکان استفاده از
-              محیط‌های دو بعدی و سه بعدی را دارند. در همه جای جهان اگر قرار باشد
-              نقشه ای کشیده شود ، همه آن را با محصول اتوکد ترسیم خواهند کرد
-              سهولت کار با ابزار اتوکد و سبک بودن این نرم افزار، آن را در میان
-              محبوب ترین برنامه های نفشه کشی در میان مهندسین قرار داده است
+              اتودسک تری دی مکس یکی از قویترین و پیشرفته ترین برنامه‌ها در زمینه
+              طراحی سه بعدی و انیمیشن سازی به شمار می رود. این نرم‌افزار به خاطر
+              داشتن ابزارهای کارا و قدرتمند در بسیاری از صنایع به ویژه بازیهای
+              رایانه ای و طراحی و خلق جلوه های ویژه در فیلمها بسیار پرکاربرد
+              است.مهندسان می توانند به راحتی طراحیهای خود در محیط اتوکد را وارد
+              این برنامه کرده و نمای سه بعدی طرح خود را ایجاد کنند و با چاپ آن،
+              نمای کلی طرح خود را قبل از اجرا به مشتریان خود نشان دهند
             </p>
           </div>
         </div>
@@ -363,6 +363,237 @@ export default function EducationalPage() {
             </p>
           </div>
         </div>
+      </div>
+    </section>
+  );
+} */
+import { useState } from "react";
+import {
+  useGetAllCoursesQuery,
+  useEnrollInCourseMutation,
+} from "../store/index";
+import max from "../assets/images/3d max.svg";
+import autocad from "../assets/images/autocad.svg";
+import sketchup from "../assets/images/sketchup.svg";
+import LeftArrow from "../assets/images/left-arrow.svg";
+import RightArrow from "../assets/images/right-arrow.svg";
+
+//const courseImages: Record<string, string> = {
+//  autocad,
+//  max,
+//  sketchup,
+// add more course image mappings here, use course title or id keys as needed
+//};
+
+export default function EducationalPage() {
+  const { data: courses, isLoading } = useGetAllCoursesQuery();
+  const [enrollInCourse] = useEnrollInCourseMutation();
+
+  // States are stored in a single object keyed by course index or course id
+  const [openCourse, setOpenCourse] = useState<string | null>(null);
+  const [formData, setFormData] = useState<
+    Record<string, { name: string; lastName: string; phone: string }>
+  >({});
+
+  const toggleCourse = (id: string) => {
+    setOpenCourse((prev) => (prev === id ? null : id));
+  };
+
+  const handleInputChange = (
+    courseId: string,
+    field: "name" | "lastName" | "phone",
+    value: string
+  ) => {
+    setFormData((prev) => ({
+      ...prev,
+      [courseId]: {
+        ...prev[courseId],
+        [field]: value,
+      },
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent, courseId: string) => {
+    e.preventDefault();
+
+    const data = formData[courseId];
+    if (!data?.name || !data?.lastName || !data?.phone) return;
+
+    try {
+      await enrollInCourse({
+        courseId,
+        enrollmentData: {
+          name: data.name,
+          lastName: data.lastName,
+          phoneNumber: data.phone,
+        },
+      }).unwrap();
+
+      alert("ثبت نام موفقیت آمیز بود");
+
+      // Clear form for that course
+      setFormData((prev) => ({
+        ...prev,
+        [courseId]: { name: "", lastName: "", phone: "" },
+      }));
+    } catch (error) {
+      console.error("Enrollment failed:", error);
+      alert("ثبت نام انجام نشد. لطفا دوباره تلاش کنید");
+    }
+  };
+
+  // Helper to get image based on course title (adjust as needed)
+  const getCourseImage = (title: string) => {
+    if (title.toLowerCase().includes("autocad")) return autocad;
+    if (
+      title.toLowerCase().includes("3d max") ||
+      title.toLowerCase().includes("max")
+    )
+      return max;
+    if (title.toLowerCase().includes("sketchup")) return sketchup;
+    return ""; // fallback or default image
+  };
+
+  return (
+    <section
+      id="educational"
+      className="scroll-mt-30 h-auto w-screen max-w-[1920px] mx-auto"
+    >
+      <div className="basis-auto p-10 flex flex-col gap-5 lg:gap-12 bg-gray-200">
+        {isLoading ? (
+          <p>در حال بارگذاری...</p>
+        ) : (
+          courses.map((course: any, idx: any) => {
+            const isOpen = openCourse === course._id;
+            const form = formData[course._id] || {
+              name: "",
+              lastName: "",
+              phone: "",
+            };
+            const isSecondView = !isOpen;
+
+            return (
+              <div
+                key={course._id}
+                data-course-id={course._id}
+                data-course-title={course.title}
+                className={`flex-col relative place-items-center lg:flex ${
+                  idx % 2 === 1 ? "lg:flex-row-reverse" : "lg:flex-row"
+                } mx-auto lg:w-260 lg:justify-around`}
+              >
+                <div>
+                  <img
+                    className={`lg:h-50 lg:w-50 h-25 w-25 transition-all duration-700 ease-in-out ${
+                      isOpen ? "scale-[0.90]" : "scale-[1.3]"
+                    } cursor-pointer`}
+                    onClick={() => toggleCourse(course._id)}
+                    src={getCourseImage(course.title)}
+                    alt={course.title}
+                  />
+                </div>
+                <div
+                  className={`flex flex-col bg-slate-100 shadow-xl transition-all duration-700 ease-in-out absolute top-34 inset-0 ${
+                    idx % 2 === 1
+                      ? "lg:right-68 lg:top-5"
+                      : "lg:left-80 lg:top-5"
+                  } ${
+                    isOpen
+                      ? "p-2 border-4 rounded-xl border-gray-500 w-75 h-50 lg:w-170 lg:h-45 opacity-100 pointer-events-auto"
+                      : "w-0 h-50 opacity-0 pointer-events-none"
+                  }`}
+                >
+                  <form
+                    onSubmit={(e) => handleSubmit(e, course._id)}
+                    className="flex flex-col gap-1"
+                  >
+                    <input
+                      className="border-2 rounded-xl border-fuchsia-300 p-1 font-lalezar"
+                      type="text"
+                      value={form.name}
+                      placeholder="نام"
+                      onChange={(e) =>
+                        handleInputChange(course._id, "name", e.target.value)
+                      }
+                    />
+                    <input
+                      className="border-2 rounded-xl border-fuchsia-300 p-1 font-lalezar"
+                      type="text"
+                      value={form.lastName}
+                      placeholder="نام خانوادگی"
+                      onChange={(e) =>
+                        handleInputChange(
+                          course._id,
+                          "lastName",
+                          e.target.value
+                        )
+                      }
+                    />
+                    <input
+                      className="border-2 rounded-xl border-fuchsia-300 p-1 font-lalezar"
+                      type="number"
+                      value={form.phone}
+                      placeholder="شماره تماس"
+                      onChange={(e) =>
+                        handleInputChange(course._id, "phone", e.target.value)
+                      }
+                    />
+                    <button
+                      className="border-2 border-gray-500 rounded-sm bg-sky-500 focus:bg-sky-700 mx-auto px-4 mt-2 font-lalezar text-gray-900"
+                      type="submit"
+                    >
+                      ثبت‌نام
+                    </button>
+                  </form>
+                </div>
+                <div
+                  className={`flex flex-col relative p-2 bg-slate-100 border-4 rounded-xl border-gray-600 w-75 h-80 mt-10 lg:w-170 lg:h-40 shadow-xl transition-all duration-700 ease-in-out ${
+                    isSecondView
+                      ? "opacity-100 pointer-events-auto"
+                      : "w-0 h-50 opacity-0 pointer-events-none"
+                  }`}
+                >
+                  <h1
+                    className={`font-bold font-boldonse text-xl text-center ${
+                      idx % 2 === 0 ? "lg:text-right" : "lg:text-left"
+                    }  cursor-default`}
+                  >
+                    {course.title || "عنوان پیدا نشد"}
+                  </h1>
+                  <div
+                    className={`text-center lg:absolute lg:flex lg:flex-row top-2 ${
+                      idx % 2 === 1 ? "right-2" : "left-2"
+                    } font-lalezar cursor-default`}
+                  >
+                    {idx % 2 === 1 ? (
+                      <>
+                        <h2 className="font-lalezar pt-1 font-bold text-sky-800 cursor-default">
+                          برای ثبت‌نام بر روی آیکون نرم‌افزار کلیک کنید
+                        </h2>
+                        <img
+                          className="size-9 hidden lg:block"
+                          src={RightArrow}
+                        />
+                      </>
+                    ) : (
+                      <>
+                        <img
+                          className="size-9 hidden lg:block"
+                          src={LeftArrow}
+                        />
+                        <h2 className="font-lalezar pt-1 font-bold text-sky-800 cursor-default">
+                          برای ثبت‌نام بر روی آیکون نرم‌افزار کلیک کنید
+                        </h2>
+                      </>
+                    )}
+                  </div>
+                  <p className="font-lalezar text-center lg:text-right text-md cursor-default pt-2 whitespace-pre-line">
+                    {course.description || "شرح دوره موجود نیست"}
+                  </p>
+                </div>
+              </div>
+            );
+          })
+        )}
       </div>
     </section>
   );
