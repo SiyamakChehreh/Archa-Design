@@ -144,7 +144,7 @@ export default function Header() {
                   onClick={handleShowCourses}
                   className="hover:bg-rose-300 border-2 border-indigo-200 rounded-2xl px-4 py-2 mt-4 font-lalezar transition-all duration-700 hover:scale-[1.3]"
                 >
-                  دوره ها
+                  دوره‌ها
                 </button>
                 {open && <MyCoursesModal onClose={() => setOpen(false)} />}
               </div>
@@ -232,10 +232,17 @@ export default function Header() {
               <div className="">
                 <button
                   onClick={handleLogout}
-                  className="hover:bg-gray-400 border-2 border-blue-500 rounded-2xl mx-auto px-2 mr-2 font-lalezar transition-all duration-700 hover:scale-[1.1]"
+                  className="hover:bg-rose-300 border-2 border-blue-500 rounded-2xl mx-auto px-2 mr-2 font-lalezar transition-all duration-700 hover:scale-[1.1]"
                 >
                   خروج
                 </button>
+                <button
+                  onClick={handleShowCourses}
+                  className="hover:bg-rose-300 border-2 border-blue-500 rounded-2xl mx-auto px-2 mr-2 font-lalezar transition-all duration-700 hover:scale-[1.1]"
+                >
+                  دوره‌ها
+                </button>
+                {open && <MyCoursesModal onClose={() => setOpen(false)} />}
               </div>
             ) : (
               <button

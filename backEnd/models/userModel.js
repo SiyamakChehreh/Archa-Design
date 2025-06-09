@@ -14,6 +14,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  role: { type: String, enum: ["user", "admin"], default: "user" },
 });
 
 //static signup method

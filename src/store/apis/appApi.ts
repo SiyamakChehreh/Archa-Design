@@ -43,6 +43,9 @@ export const appApi = createApi({
       }),
       invalidatesTags: ["UserCourses"],
     }),
+    getCurrentUser: builder.query<any, void>({
+      query: () => "/me",
+    }),
   }),
 });
 
@@ -51,4 +54,5 @@ export const {
   useEnrollInCourseMutation,
   useGetAllCoursesQuery,
   useDeleteUserEnrollmentMutation,
+  useGetCurrentUserQuery,
 } = appApi;

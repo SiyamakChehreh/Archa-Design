@@ -10,7 +10,7 @@ const authenticateUser = async (req, res, next) => {
 
   try {
     const { _id } = jwt.verify(token, process.env.SECRET);
-    req.user = await User.findOne({ _id }).select("_id");
+    req.user = await User.findOne({ _id }).select("_id role");
     next();
   } catch (err) {
     res.status(401).json({ message: "Token is not valid" });

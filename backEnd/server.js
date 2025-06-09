@@ -6,6 +6,8 @@ const coursesRoutes = require("./routes/courses");
 const userRoutes = require("./routes/user");
 const enrollRoutes = require("./routes/enroll");
 const studentRoutes = require("./routes/student");
+const adminRoutes = require("./routes/admin");
+const authRoute = require("./routes/authRoute");
 const seedCourses = require("./seedCourses");
 
 const app = express();
@@ -15,6 +17,8 @@ app.use("/api", coursesRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api", enrollRoutes);
 app.use("/api/students", studentRoutes);
+app.use("/api/admin", adminRoutes);
+app.use("/api", authRoute);
 
 mongoose
   .connect(process.env.MONGO_URI)

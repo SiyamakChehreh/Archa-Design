@@ -367,11 +367,22 @@ export default function EducationalPage() {
     </section>
   );
 } */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   useGetAllCoursesQuery,
   useEnrollInCourseMutation,
+  RootState,
 } from "../store/index";
+import { useSelector } from "react-redux";
+import { Modal } from "../components/Modal";
+import { LoginForm } from "../components/LoginForm";
+import { SignupForm } from "../components/SignupForm";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  useGetAllStudentsByCourseQuery,
+  useLazyGetAllStudentsByCourseQuery,
+  useGetCurrentUserQuery,
+} from "../store";
 import max from "../assets/images/3d max.svg";
 import autocad from "../assets/images/autocad.svg";
 import sketchup from "../assets/images/sketchup.svg";
@@ -385,9 +396,25 @@ import RightArrow from "../assets/images/right-arrow.svg";
 // add more course image mappings here, use course title or id keys as needed
 //};
 
+interface course {
+  _id: string;
+  title: string;
+  description: string;
+}
+
 export default function EducationalPage() {
   const { data: courses, isLoading } = useGetAllCoursesQuery();
   const [enrollInCourse] = useEnrollInCourseMutation();
+
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [isLoginMode, setLoginMode] = useState(true);
+
+  const { isAuthenticated } = useSelector((state: RootState) => {
+    return state.auth;
+  });
+
+  const { data: currentUser, isLoading: isUserLoading } =
+    useGetCurrentUserQuery();
 
   // States are stored in a single object keyed by course index or course id
   const [openCourse, setOpenCourse] = useState<string | null>(null);
@@ -413,8 +440,18 @@ export default function EducationalPage() {
     }));
   };
 
+  const openModal = (login: boolean) => {
+    setLoginMode(login);
+    setModalOpen(true);
+  };
+
   const handleSubmit = async (e: React.FormEvent, courseId: string) => {
     e.preventDefault();
+
+    if (!isAuthenticated) {
+      openModal(true);
+      return;
+    }
 
     const data = formData[courseId];
     if (!data?.name || !data?.lastName || !data?.phone) return;
@@ -454,6 +491,19 @@ export default function EducationalPage() {
     return ""; // fallback or default image
   };
 
+  const [triggerGetStudents, { data: students, isFetching }] =
+    useLazyGetAllStudentsByCourseQuery();
+
+  useEffect(() => {
+    if (students) {
+      console.log("Enrolled students:", students);
+    }
+  }, [students]);
+
+  const handleFetchStudents = (courseId: string) => {
+    triggerGetStudents(courseId);
+  };
+
   return (
     <section
       id="educational"
@@ -463,7 +513,7 @@ export default function EducationalPage() {
         {isLoading ? (
           <p>در حال بارگذاری...</p>
         ) : (
-          courses.map((course: any, idx: any) => {
+          courses.map((course: course, idx: number) => {
             const isOpen = openCourse === course._id;
             const form = formData[course._id] || {
               name: "",
@@ -537,12 +587,23 @@ export default function EducationalPage() {
                         handleInputChange(course._id, "phone", e.target.value)
                       }
                     />
-                    <button
-                      className="border-2 border-gray-500 rounded-sm bg-sky-500 focus:bg-sky-700 mx-auto px-4 mt-2 font-lalezar text-gray-900"
-                      type="submit"
-                    >
-                      ثبت‌نام
-                    </button>
+                    <div className="mt-2 mx-auto">
+                      <button
+                        className="border-2 border-gray-500 rounded-sm bg-sky-500 focus:bg-sky-700 mx-auto px-4 mr-3 font-lalezar text-gray-900 hover:bg-sky-600 hover:scale-[1.1] transition-all duration-800"
+                        type="submit"
+                      >
+                        ثبت‌نام
+                      </button>
+                      {currentUser?.role === "admin" && (
+                        <button
+                          type="button"
+                          onClick={() => handleFetchStudents(course._id)}
+                          className="border-2 border-gray-500 rounded-sm bg-amber-400 focus:bg-amber-600 mx-auto px-4 font-lalezar text-gray-900 hover:bg-amber-500 hover:scale-[1.1] transition-all duration-800"
+                        >
+                          لیست ثبت‌نامی‌ها
+                        </button>
+                      )}
+                    </div>
                   </form>
                 </div>
                 <div
@@ -595,6 +656,54 @@ export default function EducationalPage() {
           })
         )}
       </div>
+      <Modal
+        isLoginMode={isLoginMode}
+        isOpen={isModalOpen}
+        onClose={() => setModalOpen(false)}
+      >
+        <div className="flex justify-center mb-4">
+          <button
+            onClick={() => setLoginMode(true)}
+            className={`px-4 py-2 rounded-l-lg font-lalezar ${
+              isLoginMode ? "bg-blue-500 text-white" : "bg-gray-200"
+            }`}
+          >
+            ورود
+          </button>
+          <button
+            onClick={() => setLoginMode(false)}
+            className={`px-4 py-2 rounded-r-lg font-lalezar ${
+              !isLoginMode ? "bg-indigo-400 text-white" : "bg-gray-200"
+            }`}
+          >
+            عضویت
+          </button>
+        </div>
+
+        <AnimatePresence mode="wait">
+          {isLoginMode ? (
+            <motion.div
+              key="login"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.25 }}
+            >
+              <LoginForm onClose={() => setModalOpen(false)} />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="signup"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.25 }}
+            >
+              <SignupForm onClose={() => setModalOpen(false)} />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </Modal>
     </section>
   );
 }

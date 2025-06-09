@@ -2,6 +2,8 @@ import {
   useGetUserCoursesQuery,
   useDeleteUserEnrollmentMutation,
 } from "../store/index.tsx";
+import { useSelector } from "react-redux";
+import { RootState } from "../store/index.tsx";
 import trashcan from "../assets/images/trashcan.svg";
 
 interface ModalProps {
@@ -12,6 +14,10 @@ const MyCoursesModal: React.FC<ModalProps> = ({ onClose }) => {
   const { data, isLoading, isError } = useGetUserCoursesQuery();
   const [deleteEnrolledCourse] = useDeleteUserEnrollmentMutation();
 
+  const { email } = useSelector((state: RootState) => {
+    return state.auth;
+  });
+
   const handleDelete = async (courseId: string) => {
     try {
       await deleteEnrolledCourse(courseId).unwrap();
@@ -21,11 +27,12 @@ const MyCoursesModal: React.FC<ModalProps> = ({ onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+    <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50">
       <div className="bg-white p-6 rounded-lg w-96 flex-col justify-items-center">
-        <h2 className="text-xl font-bold mb-4 font-lalezar">
+        <h2 className="text-xl font-bold mb-2 font-lalezar">
           دوره‌های ثبت‌نام شده
         </h2>
+        <div className="font-underdog font-bold mb-2">{email}</div>
 
         {isLoading && <p>Loading...</p>}
         {isError && <p>Something went wrong.</p>}
