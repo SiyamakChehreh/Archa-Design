@@ -37,4 +37,25 @@ const getStudentsByCourse = async (req, res) => {
   }
 };
 
-module.exports = { createCourse, getAllStudents, getStudentsByCourse };
+//DELETE a specific course
+const deleteCourse = async (req, res) => {
+  const { courseId } = req.params;
+
+  try {
+    const course = await Course.findByIdAndDelete(courseId);
+
+    if (!course) {
+      res.status(404).json({ message: "Course not found" });
+    }
+    res.status(200).json({ message: "Course deleted successfully", course });
+  } catch (error) {
+    res.status(400).json({ error: "failed to delete the requested course" });
+  }
+};
+
+module.exports = {
+  createCourse,
+  getAllStudents,
+  getStudentsByCourse,
+  deleteCourse,
+};

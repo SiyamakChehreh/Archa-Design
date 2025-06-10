@@ -35,7 +35,7 @@ export {
   useCreateCourseMutation,
   useGetAllStudentsQuery,
   useGetAllStudentsByCourseQuery,
-  useLazyGetAllStudentsByCourseQuery,
+  useDeleteCourseMutation,
 } from "./apis/adminApi";
 export { loginSuccess, logout };
 export type RootState = ReturnType<typeof store.getState>;

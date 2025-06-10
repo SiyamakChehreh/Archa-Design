@@ -371,18 +371,16 @@ import { useState, useEffect } from "react";
 import {
   useGetAllCoursesQuery,
   useEnrollInCourseMutation,
+  useGetCurrentUserQuery,
+  useDeleteCourseMutation,
   RootState,
 } from "../store/index";
 import { useSelector } from "react-redux";
+import { CourseStudentsModal } from "../components/CourseStudentsModal";
 import { Modal } from "../components/Modal";
 import { LoginForm } from "../components/LoginForm";
 import { SignupForm } from "../components/SignupForm";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  useGetAllStudentsByCourseQuery,
-  useLazyGetAllStudentsByCourseQuery,
-  useGetCurrentUserQuery,
-} from "../store";
 import max from "../assets/images/3d max.svg";
 import autocad from "../assets/images/autocad.svg";
 import sketchup from "../assets/images/sketchup.svg";
@@ -403,8 +401,15 @@ interface course {
 }
 
 export default function EducationalPage() {
-  const { data: courses, isLoading } = useGetAllCoursesQuery();
+  const {
+    data: courses,
+    isLoading,
+    refetch: refetchCourses,
+  } = useGetAllCoursesQuery();
   const [enrollInCourse] = useEnrollInCourseMutation();
+  const [deleteCourse] = useDeleteCourseMutation();
+
+  const [isCourseModalOpen, setCourseModalOpen] = useState(false);
 
   const [isModalOpen, setModalOpen] = useState(false);
   const [isLoginMode, setLoginMode] = useState(true);
@@ -413,8 +418,18 @@ export default function EducationalPage() {
     return state.auth;
   });
 
-  const { data: currentUser, isLoading: isUserLoading } =
-    useGetCurrentUserQuery();
+  const { data: currentUser, refetch } = useGetCurrentUserQuery();
+
+  useEffect(() => {
+    refetch();
+  }, [isAuthenticated]);
+
+  console.log(currentUser);
+
+  const handleDeleteCourse = (courseId: string) => {
+    deleteCourse(courseId);
+    refetchCourses();
+  };
 
   // States are stored in a single object keyed by course index or course id
   const [openCourse, setOpenCourse] = useState<string | null>(null);
@@ -438,6 +453,10 @@ export default function EducationalPage() {
         [field]: value,
       },
     }));
+  };
+
+  const openCourseModal = () => {
+    setCourseModalOpen(true);
   };
 
   const openModal = (login: boolean) => {
@@ -489,19 +508,6 @@ export default function EducationalPage() {
       return max;
     if (title.toLowerCase().includes("sketchup")) return sketchup;
     return ""; // fallback or default image
-  };
-
-  const [triggerGetStudents, { data: students, isFetching }] =
-    useLazyGetAllStudentsByCourseQuery();
-
-  useEffect(() => {
-    if (students) {
-      console.log("Enrolled students:", students);
-    }
-  }, [students]);
-
-  const handleFetchStudents = (courseId: string) => {
-    triggerGetStudents(courseId);
   };
 
   return (
@@ -587,7 +593,7 @@ export default function EducationalPage() {
                         handleInputChange(course._id, "phone", e.target.value)
                       }
                     />
-                    <div className="mt-2 mx-auto">
+                    <div className="mt-2 mx-auto flex flex-row">
                       <button
                         className="border-2 border-gray-500 rounded-sm bg-sky-500 focus:bg-sky-700 mx-auto px-4 mr-3 font-lalezar text-gray-900 hover:bg-sky-600 hover:scale-[1.1] transition-all duration-800"
                         type="submit"
@@ -595,16 +601,29 @@ export default function EducationalPage() {
                         ثبت‌نام
                       </button>
                       {currentUser?.role === "admin" && (
-                        <button
-                          type="button"
-                          onClick={() => handleFetchStudents(course._id)}
-                          className="border-2 border-gray-500 rounded-sm bg-amber-400 focus:bg-amber-600 mx-auto px-4 font-lalezar text-gray-900 hover:bg-amber-500 hover:scale-[1.1] transition-all duration-800"
-                        >
-                          لیست ثبت‌نامی‌ها
-                        </button>
+                        <div>
+                          <button
+                            type="button"
+                            onClick={() => openCourseModal()}
+                            className="border-2 border-gray-500 rounded-sm bg-amber-400 focus:bg-amber-600 mx-auto px-4 font-lalezar text-gray-900 hover:bg-amber-500 hover:scale-[1.1] transition-all duration-800"
+                          >
+                            لیست ثبت‌نامی‌ها
+                          </button>
+                          <button
+                            className="border-2 border-gray-500 rounded-sm bg-rose-300 focus:bg-rose-600 mx-auto ml-3 px-4 font-lalezar text-gray-900 hover:bg-rose-400 hover:scale-[1.1] transition-all duration-800"
+                            onClick={() => handleDeleteCourse(course._id)}
+                          >
+                            حذف دوره
+                          </button>
+                        </div>
                       )}
                     </div>
                   </form>
+                  <CourseStudentsModal
+                    isCourseOpen={isCourseModalOpen}
+                    onClose={() => setCourseModalOpen(false)}
+                    courseId={course._id}
+                  />
                 </div>
                 <div
                   className={`flex flex-col relative p-2 bg-slate-100 border-4 rounded-xl border-gray-600 w-75 h-80 mt-10 lg:w-170 lg:h-40 shadow-xl transition-all duration-700 ease-in-out ${

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { useGetCurrentUserQuery } from "../store";
 import { logout, RootState } from "../store";
 import X from "../assets/images/x.svg";
 import instagram from "../assets/images/instagram.svg";
@@ -13,11 +14,16 @@ import MyCoursesModal from "./MyCoursesModal";
 import { LoginForm } from "./LoginForm";
 import { SignupForm } from "./SignupForm";
 import { motion, AnimatePresence } from "framer-motion";
+import { StudentsModal } from "./StudentsModal";
+import { CreateCourseModal } from "./CreateCourseModal";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [open, setOpen] = useState(false);
+  const [toolsOpen, setToolsOpen] = useState(false);
+  const [studentsModalOpen, setStudentsModalOpen] = useState(false);
+  const [createCourseModal, setCreateCourseModal] = useState(false);
 
   const [isModalOpen, setModalOpen] = useState(false);
   const [isLoginMode, setLoginMode] = useState(true);
@@ -29,13 +35,12 @@ export default function Header() {
     (state: RootState) => state.auth
   );
 
+  const { data: currentUser } = useGetCurrentUserQuery();
+
+  console.log(currentUser);
+
   const handleLogout = () => {
     dispatch(logout());
-  };
-
-  const openModal = (login: boolean) => {
-    setLoginMode(login);
-    setModalOpen(true);
   };
 
   useEffect(() => {
@@ -50,8 +55,21 @@ export default function Header() {
 
   const isHome = location.pathname === "/";
 
+  const openModal = (login: boolean) => {
+    setLoginMode(login);
+    setModalOpen(true);
+  };
+
   const handleShowCourses = () => {
     setOpen(!open);
+  };
+
+  const handleShowTools = () => {
+    setToolsOpen(!toolsOpen);
+  };
+
+  const handleStudentsModal = () => {
+    setStudentsModalOpen(!studentsModalOpen);
   };
 
   const handleClick = () => {
@@ -80,7 +98,7 @@ export default function Header() {
             </Link>
           </div>
           <ul className="flex flex-row gap-12 items-center ml-20">
-            <li className="border-4 rounded-xl border-indigo-200 hover:border-stone-500 hover:font-bold px-6 py-4 hover:bg-gray-300 transition-all duration-600 text-xl font-lalezar hover:scale-[1.1]">
+            <li className="border-4 rounded-xl border-indigo-200 hover:border-stone-500 hover:font-bold shadow-xl px-6 py-4 hover:bg-gray-300 transition-all duration-600 text-xl font-lalezar hover:scale-[1.1]">
               <Link
                 to="educational"
                 onClick={(e) => {
@@ -92,7 +110,7 @@ export default function Header() {
                 برنامه های آموزشی
               </Link>
             </li>
-            <li className="border-4 rounded-xl border-indigo-200 hover:border-stone-500 hover:font-bold px-6 py-4 hover:bg-gray-300 transition-all duration-600 text-xl font-lalezar hover:scale-[1.1]">
+            <li className="border-4 rounded-xl border-indigo-200 hover:border-stone-500 hover:font-bold shadow-xl px-6 py-4 hover:bg-gray-300 transition-all duration-600 text-xl font-lalezar hover:scale-[1.1]">
               <Link
                 to="/about"
                 onClick={(e) => {
@@ -104,7 +122,7 @@ export default function Header() {
                 درباره ی ما
               </Link>
             </li>
-            <li className="border-4 rounded-xl border-indigo-200 hover:border-stone-500 hover:font-bold px-6 py-4 hover:bg-gray-300 transition-all duration-600  text-xl font-lalezar hover:scale-[1.1]">
+            <li className="border-4 rounded-xl border-indigo-200 hover:border-stone-500 hover:font-bold shadow-xl px-6 py-4 hover:bg-gray-300 transition-all duration-600  text-xl font-lalezar hover:scale-[1.1]">
               <Link
                 to="/architects"
                 onClick={(e) => {
@@ -117,7 +135,7 @@ export default function Header() {
                 تیم معماران
               </Link>
             </li>
-            <li className="border-4 rounded-xl border-indigo-200 hover:border-stone-500 hover:font-bold px-6 py-4 hover:bg-gray-300 transition-all duration-600 text-xl font-lalezar hover:scale-[1.1]">
+            <li className="border-4 rounded-xl border-indigo-200 hover:border-stone-500 hover:font-bold shadow-xl px-6 py-4 hover:bg-gray-300 transition-all duration-600 text-xl font-lalezar hover:scale-[1.1]">
               <Link
                 to="/projects"
                 onClick={(e) => {
@@ -136,17 +154,50 @@ export default function Header() {
               <div className="flex flex-row gap-6">
                 <button
                   onClick={handleLogout}
-                  className="hover:bg-rose-300 border-2 border-indigo-200 rounded-2xl px-4 py-2 mt-4 font-lalezar transition-all duration-700 hover:scale-[1.3]"
+                  className="hover:bg-rose-300 border-2 border-indigo-200 shadow-xl rounded-2xl px-4 py-2 mt-4 font-lalezar transition-all duration-700 hover:scale-[1.3]"
                 >
                   خروج
                 </button>
-                <button
-                  onClick={handleShowCourses}
-                  className="hover:bg-rose-300 border-2 border-indigo-200 rounded-2xl px-4 py-2 mt-4 font-lalezar transition-all duration-700 hover:scale-[1.3]"
-                >
-                  دوره‌ها
-                </button>
+                {currentUser?.role === "admin" ? (
+                  <button
+                    onClick={handleShowTools}
+                    className="hover:bg-amber-300 border-2 border-indigo-200 shadow-xl rounded-2xl px-4 py-2 mt-4 font-lalezar transition-all duration-700 hover:scale-[1.3]"
+                  >
+                    ابزارها
+                  </button>
+                ) : (
+                  <button
+                    onClick={handleShowCourses}
+                    className="hover:bg-rose-300 border-2 border-indigo-200 shadow-xl rounded-2xl px-4 py-2 mt-4 font-lalezar transition-all duration-700 hover:scale-[1.3]"
+                  >
+                    دوره‌ها
+                  </button>
+                )}
                 {open && <MyCoursesModal onClose={() => setOpen(false)} />}
+                {toolsOpen && (
+                  <div className="bg-amber-200 border-indigo-200 border-3 rounded-xl absolute z-40 top-[120px] right-4 py-3 mx-auto justify-items-center flex flex-col gap-4 w-full max-w-xs shadow-2xl">
+                    <button
+                      onClick={handleStudentsModal}
+                      className="font-lalezar border-2 hover:bg-amber-300 border-gray-400 rounded-md mx-auto px-12 py-2 transition-all duration-700 cursor-pointer shadow-md"
+                    >
+                      لیست تمامی متقاضیان
+                    </button>
+                    <button
+                      onClick={() => setCreateCourseModal(!createCourseModal)}
+                      className="font-lalezar border-2 hover:bg-amber-300 border-gray-400 rounded-md mx-auto px-12 py-2 transition-all duration-700 cursor-pointer shadow-md"
+                    >
+                      اضافه کردن دوره‌ی جدید
+                    </button>
+                  </div>
+                )}
+                <StudentsModal
+                  isModalOpen={studentsModalOpen}
+                  onClose={() => setStudentsModalOpen(false)}
+                />
+                <CreateCourseModal
+                  isCreateCourseOpen={createCourseModal}
+                  onClose={() => setCreateCourseModal(false)}
+                />
               </div>
             </div>
           ) : (
@@ -236,12 +287,14 @@ export default function Header() {
                 >
                   خروج
                 </button>
-                <button
-                  onClick={handleShowCourses}
-                  className="hover:bg-rose-300 border-2 border-blue-500 rounded-2xl mx-auto px-2 mr-2 font-lalezar transition-all duration-700 hover:scale-[1.1]"
-                >
-                  دوره‌ها
-                </button>
+                {currentUser?.role === "user" && (
+                  <button
+                    onClick={handleShowCourses}
+                    className="hover:bg-rose-300 border-2 border-blue-500 rounded-2xl mx-auto px-2 mr-2 font-lalezar transition-all duration-700 hover:scale-[1.1]"
+                  >
+                    دوره‌ها
+                  </button>
+                )}
                 {open && <MyCoursesModal onClose={() => setOpen(false)} />}
               </div>
             ) : (
@@ -356,6 +409,16 @@ export default function Header() {
               >
                 برنامه‌های آموزشی
               </Link>
+              {isAuthenticated && currentUser?.role === "admin" && (
+                <div className="flex flex-col">
+                  <button className="block py-2 text-gray-700 hover:text-blue-600 font-lalezar font-bold">
+                    لیست تمامی متقاضیان
+                  </button>
+                  <button className="block py-2 text-gray-700 hover:text-blue-600 font-lalezar font-bold">
+                    اضافه کردن دوره‌ی جدید
+                  </button>
+                </div>
+              )}
             </div>
           )}
         </nav>

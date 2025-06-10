@@ -4,12 +4,19 @@ const {
   createCourse,
   getAllStudents,
   getStudentsByCourse,
+  deleteCourse,
 } = require("../controllers/adminControllers");
 const requireAdminAuth = require("../middleware/adminAuthMiddleware");
 const authenticateUser = require("../middleware/authMiddleware");
 
 // All routes here should use requireAdminAuth middleware
 router.post("/courses", authenticateUser, requireAdminAuth, createCourse);
+router.delete(
+  "/courses/:courseId",
+  authenticateUser,
+  requireAdminAuth,
+  deleteCourse
+);
 router.get("/students", authenticateUser, requireAdminAuth, getAllStudents);
 router.get(
   "/students/:courseId",

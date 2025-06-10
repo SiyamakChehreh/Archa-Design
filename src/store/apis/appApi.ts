@@ -13,7 +13,7 @@ export const appApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ["UserCourses", "Courses", "Students"],
+  tagTypes: ["UserCourses", "Courses", "Students", "UserRole"],
   endpoints: (builder) => ({
     // 🔸 Get courses enrolled by a specific user
     getUserCourses: builder.query<any, void>({
@@ -45,6 +45,7 @@ export const appApi = createApi({
     }),
     getCurrentUser: builder.query<any, void>({
       query: () => "/me",
+      providesTags: ["UserRole"],
     }),
   }),
 });

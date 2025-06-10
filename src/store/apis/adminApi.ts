@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-type NewCourse = {
+export type NewCourse = {
   title: string;
   description: string;
 };
@@ -25,7 +25,13 @@ export const adminApi = createApi({
         body: credentials,
       }),
     }),
-    getAllStudents: builder.query({
+    deleteCourse: builder.mutation({
+      query: (courseId: string) => ({
+        url: `/courses/${courseId}`,
+        method: "DELETE",
+      }),
+    }),
+    getAllStudents: builder.query<any, void>({
       query: () => ({
         url: "/students",
       }),
@@ -42,5 +48,5 @@ export const {
   useCreateCourseMutation,
   useGetAllStudentsQuery,
   useGetAllStudentsByCourseQuery,
-  useLazyGetAllStudentsByCourseQuery,
+  useDeleteCourseMutation,
 } = adminApi;
