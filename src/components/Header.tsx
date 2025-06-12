@@ -411,12 +411,26 @@ export default function Header() {
               </Link>
               {isAuthenticated && currentUser?.role === "admin" && (
                 <div className="flex flex-col">
-                  <button className="block py-2 text-gray-700 hover:text-blue-600 font-lalezar font-bold">
+                  <button
+                    onClick={handleStudentsModal}
+                    className="block py-2 text-gray-700 hover:text-blue-600 font-lalezar font-bold"
+                  >
                     لیست تمامی متقاضیان
                   </button>
-                  <button className="block py-2 text-gray-700 hover:text-blue-600 font-lalezar font-bold">
+                  <button
+                    onClick={() => setCreateCourseModal(!createCourseModal)}
+                    className="block py-2 text-gray-700 hover:text-blue-600 font-lalezar font-bold"
+                  >
                     اضافه کردن دوره‌ی جدید
                   </button>
+                  <StudentsModal
+                    isModalOpen={studentsModalOpen}
+                    onClose={() => setStudentsModalOpen(false)}
+                  />
+                  <CreateCourseModal
+                    isCreateCourseOpen={createCourseModal}
+                    onClose={() => setCreateCourseModal(false)}
+                  />
                 </div>
               )}
             </div>

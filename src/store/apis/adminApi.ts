@@ -3,6 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export type NewCourse = {
   title: string;
   description: string;
+  image: File | null;
 };
 
 export const adminApi = createApi({
@@ -18,12 +19,29 @@ export const adminApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    createCourse: builder.mutation({
+    /*createCourse: builder.mutation({
       query: (credentials: NewCourse) => ({
         url: "/courses",
         method: "POST",
         body: credentials,
       }),
+    }),*/
+    createCourse: builder.mutation<void, NewCourse>({
+      query: ({ title, description, image }) => {
+        const formData = new FormData();
+        formData.append("title", title);
+        formData.append("description", description);
+        if (image) {
+          formData.append("image", image);
+        }
+
+        return {
+          url: "/courses",
+          method: "POST",
+          body: formData,
+          // Don't set 'Content-Type', let browser set multipart/form-data boundary
+        };
+      },
     }),
     deleteCourse: builder.mutation({
       query: (courseId: string) => ({

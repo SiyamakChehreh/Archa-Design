@@ -4,9 +4,10 @@ const Student = require("../models/studentModel");
 //Create new course
 const createCourse = async (req, res) => {
   const { title, description } = req.body;
+  const image = req.file ? `/uploads/${req.file.filename}` : null;
 
   try {
-    const newCourse = await Course.create({ title, description });
+    const newCourse = await Course.create({ title, description, image });
     res.status(201).json(newCourse);
   } catch (error) {
     res.status(400).json({ message: error.message });

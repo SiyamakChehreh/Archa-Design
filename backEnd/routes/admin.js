@@ -8,9 +8,16 @@ const {
 } = require("../controllers/adminControllers");
 const requireAdminAuth = require("../middleware/adminAuthMiddleware");
 const authenticateUser = require("../middleware/authMiddleware");
+const upload = require("../middleware/uploadMiddleware");
 
 // All routes here should use requireAdminAuth middleware
-router.post("/courses", authenticateUser, requireAdminAuth, createCourse);
+router.post(
+  "/courses",
+  authenticateUser,
+  requireAdminAuth,
+  upload.single("image"),
+  createCourse
+);
 router.delete(
   "/courses/:courseId",
   authenticateUser,

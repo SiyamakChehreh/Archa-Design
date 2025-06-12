@@ -9,6 +9,7 @@ const studentRoutes = require("./routes/student");
 const adminRoutes = require("./routes/admin");
 const authRoute = require("./routes/authRoute");
 const seedCourses = require("./seedCourses");
+const path = require("path");
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use("/api", enrollRoutes);
 app.use("/api/students", studentRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api", authRoute);
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 mongoose
   .connect(process.env.MONGO_URI)
