@@ -37,7 +37,7 @@ export const CourseStudentsModal: React.FC<ModalProps> = ({
         {isLoading ? (
           <div className="text-center text-gray-700">...در حال بارگذاری</div>
         ) : (
-          <div>
+          <div className="max-w-md w-full max-h-120 overflow-scroll">
             {students && students.length > 0 ? (
               students.map((student: Student) => (
                 <div

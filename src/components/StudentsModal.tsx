@@ -27,14 +27,14 @@ export const StudentsModal: React.FC<ModalProps> = ({
       <div className="relative w-full max-w-md p-6 rounded-xl bg-white border-2 border-amber-400">
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 text-gray-600 hover:text-gray-800 text-xl"
+          className="absolute top-1 right-1 font-bold hover:scale-[1.1] transitiona-all duration-500 text-gray-600 hover:text-gray-800 text-2xl"
         >
           ✕
         </button>
         {isLoading ? (
           <div className="text-center text-gray-700">...در حال بارگذاری</div>
         ) : (
-          <div>
+          <div className="max-w-md w-full max-h-120 overflow-scroll">
             {students && students.length > 0 ? (
               students.map((student: Student) => (
                 <div

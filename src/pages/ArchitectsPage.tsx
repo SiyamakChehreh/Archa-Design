@@ -31,7 +31,7 @@ export default function ArchitectsPage() {
           </div>
         </div>
         <div>
-          <div className=" bg-gray-200 flex flex-row flex-wrap overflow-hidden items-end justify-center gap-10 lg:gap-25 lg:pl-18 pt-15">
+          <div className=" bg-gray-200 flex flex-row flex-wrap overflow-hidden items-end justify-center gap-12 lg:gap-25 lg:pl-18 pt-25">
             <div className="group h-50 w-40 lg:h-70 lg:w-60 mb-4 lg:mb-10 border-10 border-fuchsia-100 rounded-lg bg-stone-300 relative perspective-normal opacity-60 hover:opacity-100 hover:scale-[1.1] transition-all duration-800 drop-shadow-2xl">
               <div className="absolute bg-amber-600 size-22 lg:size-45 rounded-full -top-9 -left-10 lg:-top-18 lg:-left-20 transform-3d group-hover:rotate-x-360 transition-all duration-800 animate-rotate-border bg-conic/[from_var(--border-angle)] from-stone-300 via-amber-400 to-stone-300">
                 <img
@@ -118,11 +118,3 @@ export default function ArchitectsPage() {
     </section>
   );
 }
-
-/*<section id="architects">
-<div className="h-screen w-screen bg-neutral-900 flex flex-row justify-center items-center">
-<div className="w-full max-w-sm animate-rotate-border rounded-lg bg-conic/[from_var(--border-angle)] from-yellow-200 via-sky-600 to-yellow-300 p-px">
-  <div className="bg-gray-900 rounded-lg p-10">Hello world</div>
-</div>
-</div>
-</section> */

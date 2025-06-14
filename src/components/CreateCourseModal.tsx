@@ -61,7 +61,11 @@ export const CreateCourseModal: React.FC<ModalProps> = ({
             placeholder="توضیحات"
             onChange={(e) => setDescription(e.target.value)}
           />
+          <label className="font-lalezar font-bold text-right mr-3">
+            :برای انتخاب عکس در کادر زیر کلیک کنید
+          </label>
           <input
+            id="avatar"
             type="file"
             accept="image/*"
             onChange={handleFileChange}

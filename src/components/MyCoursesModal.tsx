@@ -28,7 +28,7 @@ const MyCoursesModal: React.FC<ModalProps> = ({ onClose }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50">
-      <div className="bg-white p-6 rounded-lg w-96 flex-col justify-items-center">
+      <div className="bg-white p-6 rounded-lg max-w-md w-max h-120 overflow-y-scroll flex-col justify-items-center">
         <h2 className="text-xl font-bold mb-2 font-lalezar">
           دوره‌های ثبت‌نام شده
         </h2>
@@ -44,7 +44,7 @@ const MyCoursesModal: React.FC<ModalProps> = ({ onClose }) => {
                 key={course._id}
                 className="border p-2 rounded bg-gray-100 flex flex-row justify-between"
               >
-                <p>📖 {course.courseId.title} </p>
+                <p>📖 {course.courseId?.title} </p>
                 <button
                   className="cursor-pointer"
                   onClick={() => handleDelete(course.courseId._id)}

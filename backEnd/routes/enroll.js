@@ -11,6 +11,16 @@ router.post("/courses/:courseId/enroll", authenticateUser, async (req, res) => {
   const { name, lastName, phoneNumber } = req.body;
   const userId = req.user._id;
 
+  const existingEnrollment = await Student.findOne({ userId }).findOne({
+    courseId,
+  });
+
+  if (existingEnrollment) {
+    return res
+      .status(400)
+      .json({ message: "قبلا در این دوره ثبت‌نام کرده‌اید" });
+  }
+
   if (!name || !lastName || !phoneNumber) {
     return res.status(400).json({ message: "تمام فیلدها الزامی است" });
   }
