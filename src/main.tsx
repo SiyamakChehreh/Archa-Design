@@ -1,5 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { store } from "../src/store/index.tsx";
+import { Provider } from "react-redux";
 import "./index.css";
 import App from "./App.tsx";
 import Footer from "./components/Footer.tsx";
@@ -10,11 +12,13 @@ import EducationalPage from "./pages/EducationalPage.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
-    <AboutPage />
-    <ArchitectsPage />
-    <ProjectsPage />
-    <EducationalPage />
-    <Footer />
+    <Provider store={store}>
+      <App />
+      <AboutPage />
+      <ArchitectsPage />
+      <ProjectsPage />
+      <EducationalPage />
+      <Footer />
+    </Provider>
   </StrictMode>
 );
