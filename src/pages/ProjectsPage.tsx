@@ -1,14 +1,28 @@
 import { useState } from "react";
 import ImageSlider from "../components/ImageSlider";
-import Jurassic from "../assets/images/jurassic-park.png";
-import Building from "../assets/images/building.jpg";
-import Mountain from "../assets/mountain.jpg";
-import building1 from "../assets/images/architecture/building1.jpg";
-import building2 from "../assets/images/architecture/building2.jpg";
-import building3 from "../assets/images/architecture/building3.jpg";
+import arch1 from "../assets/images/architecture/project3/pic1.jpg";
+import arch2 from "../assets/images/architecture/project3/archa2.jpg";
+import arch3 from "../assets/images/architecture/project3/archa3.jpg";
+import arch4 from "../assets/images/architecture/project3/arch4.jpg";
+import arch5 from "../assets/images/architecture/project3/arch5.jpg";
+import arch6 from "../assets/images/architecture/project3/arch6.jpg";
+import img1 from "../assets/images/architecture/project2/pic1.jpg";
+import img2 from "../assets/images/architecture/project2/pic2.jpg";
+import img3 from "../assets/images/architecture/project2/pic3.jpg";
+import img4 from "../assets/images/architecture/project2/pic4.jpg";
+import img5 from "../assets/images/architecture/project2/pic5.jpg";
+import img6 from "../assets/images/architecture/project2/pic6.jpg";
+import pic1 from "../assets/images/architecture/project1/pic1.jpg";
+import pic2 from "../assets/images/architecture/project1/pic2.jpg";
+import pic3 from "../assets/images/architecture/project1/pic3.jpg";
+import pic4 from "../assets/images/architecture/project1/pic4.jpg";
+import pic5 from "../assets/images/architecture/project1/pic5.jpg";
+import pic6 from "../assets/images/architecture/project1/pic6.jpg";
+import pic7 from "../assets/images/architecture/project1/pic7.jpg";
 
-const album1 = [Jurassic, Building, Mountain];
-const album2 = [building1, building2, building3];
+const album1 = [arch1, arch2, arch3, arch4, arch5, arch6];
+const album2 = [img1, img2, img3, img4, img5, img6];
+const album3 = [pic1, pic2, pic3, pic4, pic5, pic6, pic7];
 
 const content = (
   <>
@@ -33,7 +47,7 @@ export default function ProjectsPage() {
       className="h-auto w-screen md:mt-0 scroll-mt-30 max-w-[1920px] mx-auto"
     >
       <div className="bg-gray-200 grid grid-cols-1 lg:grid-cols-2 pb-4">
-        {[album1, album2, album1, album2].map((album, index) => (
+        {[album1, album2, album3, album2].map((album, index) => (
           <ImageSlider
             key={index}
             content={content}

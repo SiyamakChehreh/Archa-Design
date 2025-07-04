@@ -43,7 +43,10 @@ export const CreateCourseModal: React.FC<ModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-500/80 bg-opacity-50">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-gray-500/80 bg-opacity-50"
+      onClick={onClose}
+    >
       <div className="relative w-full max-w-md p-6 rounded-xl bg-white border-2 border-amber-400">
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <label className="font-lalezar font-bold mx-auto mb-2 text-2xl">

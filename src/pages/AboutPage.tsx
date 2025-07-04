@@ -1,5 +1,4 @@
 import mountain from "../assets/mountain.jpg";
-import building from "../assets/images/architecture/building3.jpg";
 
 export default function AboutPage() {
   return (
@@ -29,7 +28,7 @@ export default function AboutPage() {
           <div className="group h-90 w-70 lg:h-130 lg:w-90 border-7 border-gray-600 rounded-4xl bg-amber-50 flex flex-col place-items-center opacity-45 hover:opacity-100 transform-3d transition duration-700 scale-[1.02] hover:scale-[0.9] shadow-2xl">
             <img
               className="w-40 h-28 lg:h-54 lg:w-80 mx-15 -mt-15 border-6 object-cover rounded-2xl border-cyan-800 shadow-2xl scale-[0.8] group-hover:scale-[1.06] transition-all duration-700"
-              src={building}
+              src={mountain}
             />
             <h1 className="text-lg lg:text-4xl font-lalezar font-bold lg:my-4 cursor-default">
               طراحی نمای بنا

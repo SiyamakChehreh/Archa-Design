@@ -175,19 +175,24 @@ export default function Header() {
                 )}
                 {open && <MyCoursesModal onClose={() => setOpen(false)} />}
                 {toolsOpen && (
-                  <div className="bg-amber-200 border-indigo-200 border-3 rounded-xl absolute z-40 top-[120px] right-4 py-3 mx-auto justify-items-center flex flex-col gap-4 w-full max-w-xs shadow-2xl">
-                    <button
-                      onClick={handleStudentsModal}
-                      className="font-lalezar border-2 hover:bg-amber-300 border-gray-400 rounded-md mx-auto px-12 py-2 transition-all duration-700 cursor-pointer shadow-md"
-                    >
-                      لیست تمامی متقاضیان
-                    </button>
-                    <button
-                      onClick={() => setCreateCourseModal(!createCourseModal)}
-                      className="font-lalezar border-2 hover:bg-amber-300 border-gray-400 rounded-md mx-auto px-12 py-2 transition-all duration-700 cursor-pointer shadow-md"
-                    >
-                      اضافه کردن دوره‌ی جدید
-                    </button>
+                  <div
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-gray-500/80 bg-opacity-95"
+                    onClick={handleShowTools}
+                  >
+                    <div className="bg-amber-200 border-indigo-200 border-3 rounded-xl absolute z-40 top-[120px] right-4 py-3 mx-auto justify-items-center flex flex-col gap-4 w-full max-w-xs shadow-2xl">
+                      <button
+                        onClick={handleStudentsModal}
+                        className="font-lalezar border-2 hover:bg-amber-300 border-gray-400 rounded-md mx-auto px-12 py-2 transition-all duration-700 cursor-pointer shadow-md"
+                      >
+                        لیست تمامی متقاضیان
+                      </button>
+                      <button
+                        onClick={() => setCreateCourseModal(!createCourseModal)}
+                        className="font-lalezar border-2 hover:bg-amber-300 border-gray-400 rounded-md mx-auto px-12 py-2 transition-all duration-700 cursor-pointer shadow-md"
+                      >
+                        اضافه کردن دوره‌ی جدید
+                      </button>
+                    </div>
                   </div>
                 )}
                 <StudentsModal

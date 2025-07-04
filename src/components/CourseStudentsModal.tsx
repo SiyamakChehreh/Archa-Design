@@ -26,7 +26,10 @@ export const CourseStudentsModal: React.FC<ModalProps> = ({
     useGetAllStudentsByCourseQuery(courseId);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-500/80 bg-opacity-50">
+    <div
+      onClick={onClose}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-gray-500/80 bg-opacity-50"
+    >
       <div className="relative w-full max-w-md p-6 rounded-xl bg-white border-2 border-amber-400">
         <button
           onClick={onClose}

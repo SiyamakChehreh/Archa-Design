@@ -27,7 +27,10 @@ const MyCoursesModal: React.FC<ModalProps> = ({ onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50">
+    <div
+      className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50"
+      onClick={onClose}
+    >
       <div className="bg-white p-6 rounded-lg max-w-md w-max h-120 overflow-y-scroll flex-col justify-items-center">
         <h2 className="text-xl font-bold mb-2 font-lalezar">
           دوره‌های ثبت‌نام شده

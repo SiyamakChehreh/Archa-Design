@@ -23,7 +23,10 @@ export const StudentsModal: React.FC<ModalProps> = ({
   const { data: students, isLoading } = useGetAllStudentsQuery();
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-500/80 bg-opacity-50">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-gray-500/80 bg-opacity-50"
+      onClick={onClose}
+    >
       <div className="relative w-full max-w-md p-6 rounded-xl bg-white border-2 border-amber-400">
         <button
           onClick={onClose}

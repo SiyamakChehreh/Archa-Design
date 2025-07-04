@@ -18,6 +18,13 @@ const ImageSlider = ({
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
+    images.forEach((src) => {
+      const img = new Image();
+      img.src = src; // preload image
+    });
+  }, [images]);
+
+  useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
     }, 3000); // Change slide every 3 seconds
@@ -38,7 +45,7 @@ const ImageSlider = ({
       onClick={onClick}
       className={`relative border-6 border-gray-600 bg-amber-50 mt-4 md:mt-5 md:mb-8 mx-auto overflow-hidden rounded-2xl shadow-xl transition-all duration-700 cursor-pointer ${
         isActive
-          ? "w-[80vw] h-[70vh] md:w-[70vw] md:h-[70vh]"
+          ? "w-[80vw] h-[70vh] md:w-[70vw] md:h-[80vh]"
           : "w-60 h-64 md:max-w-xl md:w-full md:h-78 hover:scale-[1.09]"
       }`}
     >
@@ -47,7 +54,7 @@ const ImageSlider = ({
         <img
           src={images[currentIndex]}
           alt="slider"
-          className="w-full h-auto object-contain transition-all duration-500"
+          className="w-auto h-auto mx-auto transition-all duration-500 object-fill"
         />
       </div>
 
@@ -100,7 +107,7 @@ const ImageSlider = ({
           onClick={onClose}
         >
           <div
-            className="bg-white w-11/12 md:w-3/4 h-5/6 rounded-2xl shadow-2xl p-4 transform scale-100 transition-all duration-300"
+            className="bg-white w-11/12 md:w-[80vw] h-[92vh] rounded-2xl shadow-2xl p-4 transform scale-100 transition-all duration-300"
             onClick={(e) => e.stopPropagation()}
           >
             {slider}
